@@ -27,9 +27,9 @@ export default (props) => {
           >
             {data.map((t, i) => (
               <>
-                <div className="">
+                <div className="relative">
                   <div className="w-10 h-10 rounded-full bg-base"></div>
-                  <div className="absolute text-xs text-center -ml-10 mt-2 w-32">
+                  <div className="absolute top-0 text-xs text-center -ml-10 mt-12 w-32">
                     {t}
                   </div>
                 </div>
