@@ -8,7 +8,10 @@ export default () => {
     <>
       <div className="fixed w-full z-50" ref={hRef}>
         <div className="bg-base flex justify-between">
-          <div className="p-2 mt-1 font-bold text-lg text-white w-20">
+          <div
+            onClick={() => (window.location = "/")}
+            className="cursor-pointer p-2 mt-1 font-bold text-lg text-white w-20"
+          >
             Casculator
           </div>
           <div className="p-2 pt-4 hidden md:flex">

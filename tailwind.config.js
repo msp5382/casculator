@@ -8,6 +8,7 @@ module.exports = {
         base: "#C4883B",
         "base-light": "#dc9a44",
         "base-bg": "#D8B88F",
+        "thin-white": "#F6F6F6",
       },
     },
   },

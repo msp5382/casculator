@@ -49,10 +49,10 @@ export default () => {
           </div>
           <div className="flex justify-center">
             <div
-              onClick={() => (window.location = "/casculator")}
+              onClick={() => (window.location = "/view_faculties")}
               className="cursor-pointer mb-5 lg:mb-12 rounded-full text-white text-xl p-5 bg-base"
             >
-              คำนวนคะแนน
+              ดูคณะ
             </div>
           </div>
           <div
