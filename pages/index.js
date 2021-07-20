@@ -48,7 +48,10 @@ export default () => {
             </div>
           </div>
           <div className="flex justify-center">
-            <div className="mb-5 lg:mb-12 rounded-full text-white text-xl p-5 bg-base">
+            <div
+              onClick={() => (window.location = "/casculator")}
+              className="cursor-pointer mb-5 lg:mb-12 rounded-full text-white text-xl p-5 bg-base"
+            >
               คำนวนคะแนน
             </div>
           </div>

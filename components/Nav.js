@@ -13,7 +13,7 @@ export default () => {
           </div>
           <div className="p-2 pt-4 hidden md:flex">
             {data.map((t) => (
-              <div className="ml-3 text-sm text-white">{t}</div>
+              <div className="ml-3 text-sm text-white cursor-pointer">{t}</div>
             ))}
           </div>
 
