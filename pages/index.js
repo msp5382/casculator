@@ -48,11 +48,19 @@ export default () => {
             </div>
           </div>
           <div className="flex justify-center">
-            <div className="mb-5 rounded-full text-white text-xl p-5 bg-base">
+            <div className="mb-5 lg:mb-12 rounded-full text-white text-xl p-5 bg-base">
               คำนวนคะแนน
             </div>
           </div>
-          <div className="pb-5 block md:hidden flex justify-center">
+          <div
+            onClick={() =>
+              landing.current.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: "smooth",
+              })
+            }
+            className="pb-5 block md:hidden flex justify-center"
+          >
             <ion-icon
               className="fill-current text-base"
               size="large"
