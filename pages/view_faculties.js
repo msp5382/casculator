@@ -3,9 +3,11 @@ import Nav from "../components/Nav";
 import Search from "../components/Forms/Search";
 import Modal from "../components/Modal";
 import Button from "../components/Forms/Button";
-import axios from "axios";
 
-import { getUniversityFromCache } from "../services/universities";
+import {
+  getUniversityFromCache,
+  getFacilityFromCache,
+} from "../services/universities";
 export default () => {
   const [h, setHeight] = useState(24);
   useEffect(() => {
@@ -16,11 +18,16 @@ export default () => {
   const [sort, setSort] = useState("default");
   const [isShowSortModal, setShowSortModal] = useState(false);
   const [unis, setUnis] = useState([]);
+  const [facis, setFacis] = useState([]);
   const originUni = useRef([]);
   const [searchKey, setSearch] = useState("");
+  const [viewUni, setViewUni] = useState("");
+
   useEffect(() => {
     (async () => {
       const _unis = await (await getUniversityFromCache()).json();
+      const _facis = await (await getFacilityFromCache()).json();
+
       let sorted = [];
       if (sort == "default") {
         sorted = _unis.sort((a, b) => {
@@ -44,6 +51,8 @@ export default () => {
       if (originUni.current.length == 0) {
         originUni.current = sorted;
       }
+      console.log(_facis);
+      setFacis(_facis);
       setUnis(sorted);
     })();
   }, [sort]);
@@ -61,6 +70,52 @@ export default () => {
       })
     );
   }, [searchKey]);
+
+  const UniOrFaciList = () => {
+    if (viewUni == "") {
+      return unis.map(({ logo, university_name, university_id }) => (
+        <>
+          <div
+            onClick={() => setViewUni(university_id)}
+            className="flex bg-thin-white rounded p-3 mt-2"
+          >
+            <img
+              className="h-8 w-8 rounded-full"
+              src={logo ?? "chula_test.png"}
+            />
+            <div className="flex flex-col justify-center w-full pl-4">
+              <div className="text-sm">{university_name}</div>
+            </div>
+            <div className="flex flex-col justify-center pl-4">
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+            </div>
+          </div>
+        </>
+      ));
+    } else {
+      return facis
+        .filter(({ university_id }) => university_id === viewUni)
+        .map(
+          ({
+            faculty_name_th,
+            program_type_name_th,
+            field_name_th,
+            major_name_th,
+          }) => (
+            <>
+              <div className="flex bg-thin-white rounded p-3 mt-2">
+                <div className="flex flex-col justify-center w-full pl-4">
+                  <div className="text-sm">{faculty_name_th}</div>
+                  <div className="text-xs text-gray-400">
+                    {field_name_th} {major_name_th} {program_type_name_th}
+                  </div>
+                </div>
+              </div>
+            </>
+          )
+        );
+    }
+  };
   return (
     <div className="w-screen h-screen overflow-scroll flex flex-col">
       <Nav />
@@ -110,24 +165,7 @@ export default () => {
             </div>
           </div>
 
-          <div className="overflow-scroll h-full mt-2">
-            {unis.map(({ logo, university_name }) => (
-              <>
-                <div className="flex bg-thin-white rounded p-3 mt-2">
-                  <img
-                    className="h-8 w-8 rounded-full"
-                    src={logo ?? "chula_test.png"}
-                  />
-                  <div className="flex flex-col justify-center w-full pl-4">
-                    <div className="text-sm">{university_name}</div>
-                  </div>
-                  <div className="flex flex-col justify-center pl-4">
-                    <ion-icon name="chevron-forward-outline"></ion-icon>
-                  </div>
-                </div>
-              </>
-            ))}
-          </div>
+          <div className="overflow-scroll h-full mt-2">{UniOrFaciList()}</div>
         </div>
       </div>
     </div>
