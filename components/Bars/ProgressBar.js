@@ -26,7 +26,7 @@ export default (props) => {
             ref={container}
           >
             {data.map((t, i) => (
-              <>
+              <div key={i}>
                 <div className="relative">
                   <div className="w-10 h-10 rounded-full bg-base"></div>
                   <div className="absolute top-0 text-xs text-center -ml-10 mt-12 w-32">
@@ -43,7 +43,7 @@ export default (props) => {
                 ) : (
                   <></>
                 )}
-              </>
+              </div>
             ))}
           </div>
         </div>
@@ -53,6 +53,7 @@ export default (props) => {
               <>
                 {i % 2 == 0 ? (
                   <div
+                    key={i}
                     className="h-14 pr-3"
                     style={{ height: 120, paddingTop: 10 }}
                   >
@@ -67,7 +68,7 @@ export default (props) => {
           <div className="w-10">
             {data.map((t, i) => (
               <>
-                <div className="w-10 h-10 rounded-full bg-base"></div>
+                <div key={i} className="w-10 h-10 rounded-full bg-base"></div>
                 {i != amount - 1 ? (
                   <div className="flex w-10 justify-center">
                     <div className="border border-base w-0 h-5"></div>
@@ -83,6 +84,7 @@ export default (props) => {
               <>
                 {i % 2 != 0 ? (
                   <div
+                    key={i}
                     className="h-14 pl-3"
                     style={{ height: 120, paddingTop: 10 }}
                   >

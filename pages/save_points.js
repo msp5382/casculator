@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Nav from "../components/Nav";
+import Button from "../components/Forms/Button";
 export default () => {
   const gatpat = [
     ["GAT", "PAT1", "PAT2"],
@@ -52,16 +53,26 @@ export default () => {
             <div className="">GAT PAT</div>
             {gatpat.map((s, i) => {
               return (
-                <div className="flex mt-4">
+                <div className="flex mt-4" key={i}>
                   {s.map((sub, i) => {
-                    return (
-                      <input
-                        className={`${i == 1 ? "ml-2 mr-2" : ""} rounded-2xl ${
-                          sub != "" ? "border border-base cursor-pointer" : ""
-                        } w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
-                        placeholder={sub}
-                      />
-                    );
+                    if (sub != "") {
+                      return (
+                        <input
+                          className={`${
+                            i == 1 ? "ml-2 mr-2" : ""
+                          } rounded-2xl border border-base cursor-pointer w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
+                          placeholder={sub}
+                        />
+                      );
+                    } else {
+                      return (
+                        <div
+                          className={`${
+                            i == 1 ? "ml-2 mr-2" : ""
+                          } rounded-2xl w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
+                        />
+                      );
+                    }
                   })}
                 </div>
               );
@@ -69,16 +80,26 @@ export default () => {
             <div className="mt-5">วิชาสามัญ</div>
             {saman.map((s, i) => {
               return (
-                <div className="flex mt-4">
+                <div className="flex mt-4" key={i}>
                   {s.map((sub, i) => {
-                    return (
-                      <input
-                        className={`${i == 1 ? "ml-2 mr-2" : ""} rounded-2xl ${
-                          sub != "" ? "border border-base cursor-pointer" : ""
-                        } w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
-                        placeholder={sub}
-                      />
-                    );
+                    if (sub != "") {
+                      return (
+                        <input
+                          className={`${
+                            i == 1 ? "ml-2 mr-2" : ""
+                          } rounded-2xl border border-base cursor-pointer w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
+                          placeholder={sub}
+                        />
+                      );
+                    } else {
+                      return (
+                        <div
+                          className={`${
+                            i == 1 ? "ml-2 mr-2" : ""
+                          } rounded-2xl w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
+                        />
+                      );
+                    }
                   })}
                 </div>
               );
@@ -86,7 +107,7 @@ export default () => {
             <div className="mt-5">กสพท.</div>
             {korsorporthor.map((s, i) => {
               return (
-                <div className="flex mt-4">
+                <div className="flex mt-4" key={i}>
                   {s.map((sub, i) => {
                     if (sub != "") {
                       return (
@@ -112,7 +133,7 @@ export default () => {
             })}
             <div className="flex justify-end mt-5">
               <div className="bg-base text-white cursor-pointer rounded-lg pt-2 pb-2 w-24 text-center">
-                บันทึก
+                <Button text="บันทึก"></Button>
               </div>
             </div>
           </>
@@ -127,9 +148,7 @@ export default () => {
               placeholder="เลขบัตรประจำตัวประชาชน"
             />
             <div className="flex justify-end">
-              <div className="bg-base mt-3 text-white cursor-pointer rounded-lg pt-2 pb-2 w-24 text-center">
-                ค้นหา
-              </div>
+              <Button text="ค้นหา"></Button>
             </div>
           </>
         ) : (

@@ -15,8 +15,10 @@ export default () => {
             Casculator
           </div>
           <div className="p-2 pt-4 hidden md:flex">
-            {data.map((t) => (
-              <div className="ml-3 text-sm text-white cursor-pointer">{t}</div>
+            {data.map((t, i) => (
+              <div key={i} className="ml-3 text-sm text-white cursor-pointer">
+                {t}
+              </div>
             ))}
           </div>
 
@@ -32,8 +34,11 @@ export default () => {
         </div>
         {isOpen && (
           <div className="bg-base text-sm text-white">
-            {data.map((t) => (
-              <div className="cursor-pointer border-t border-base-light p-3">
+            {data.map((t, i) => (
+              <div
+                key={i}
+                className="cursor-pointer border-t border-base-light p-3"
+              >
                 {t}
               </div>
             ))}
