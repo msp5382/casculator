@@ -93,27 +93,31 @@ export default () => {
         </>
       ));
     } else {
-      return facis
-        .filter(({ university_id }) => university_id === viewUni)
-        .map(
-          ({
-            faculty_name_th,
-            program_type_name_th,
-            field_name_th,
-            major_name_th,
-          }) => (
-            <>
-              <div className="flex bg-thin-white rounded p-3 mt-2">
-                <div className="flex flex-col justify-center w-full pl-4">
-                  <div className="text-sm">{faculty_name_th}</div>
-                  <div className="text-xs text-gray-400">
-                    {field_name_th} {major_name_th} {program_type_name_th}
+      return (
+        <>
+          {facis
+            .filter(({ university_id }) => university_id === viewUni)
+            .map(
+              ({
+                faculty_name_th,
+                program_type_name_th,
+                field_name_th,
+                major_name_th,
+              }) => (
+                <>
+                  <div className="flex bg-thin-white rounded p-3 mt-2">
+                    <div className="flex flex-col justify-center w-full pl-4">
+                      <div className="text-sm">{faculty_name_th}</div>
+                      <div className="text-xs text-gray-400">
+                        {field_name_th} {major_name_th} {program_type_name_th}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </>
-          )
-        );
+                </>
+              )
+            )}
+        </>
+      );
     }
   };
   return (
@@ -150,19 +154,35 @@ export default () => {
           style={{ height: "80vh" }}
         >
           <div className="flex">
-            <Search
-              onChange={(e) => setSearch(e.target.value)}
-              value={searchKey}
-            />
+            {viewUni == "" ? (
+              <>
+                <Search
+                  onChange={(e) => setSearch(e.target.value)}
+                  value={searchKey}
+                />
 
-            <div className="flex justify-end">
-              <div
-                onClick={() => setShowSortModal(true)}
-                className="cursor-pointer text-xl flex-col flex text-white justify-center"
-              >
-                <ion-icon name="funnel-outline"></ion-icon>
-              </div>
-            </div>
+                <div className="flex justify-end">
+                  <div
+                    onClick={() => setShowSortModal(true)}
+                    className="cursor-pointer text-xl flex-col flex text-white justify-center"
+                  >
+                    <ion-icon name="funnel-outline"></ion-icon>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div
+                  className="flex text-white w-min cursor-pointer"
+                  onClick={() => setViewUni("")}
+                >
+                  <div className="flex flex-col justify-center">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                  </div>
+                  <div className="text-white text-sm">กลับ</div>
+                </div>
+              </>
+            )}
           </div>
 
           <div className="overflow-scroll h-full mt-2">{UniOrFaciList()}</div>
