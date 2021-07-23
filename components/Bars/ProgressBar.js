@@ -26,15 +26,18 @@ export default (props) => {
             ref={container}
           >
             {data.map((t, i) => (
-              <div key={i}>
-                <div className="relative">
+              <>
+                <div key={i + amount} className="relative">
                   <div className="w-10 h-10 rounded-full bg-base"></div>
                   <div className="absolute top-0 text-xs text-center -ml-10 mt-12 w-32">
                     {t}
                   </div>
                 </div>
                 {i != amount - 1 ? (
-                  <div className="flex flex-col justify-center">
+                  <div
+                    key={i + amount + 1}
+                    className="flex flex-col justify-center"
+                  >
                     <div
                       style={{ width: lineW }}
                       className="border-base border h-0"
@@ -43,7 +46,7 @@ export default (props) => {
                 ) : (
                   <></>
                 )}
-              </div>
+              </>
             ))}
           </div>
         </div>
