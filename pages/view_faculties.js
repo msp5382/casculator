@@ -6,7 +6,7 @@ import Button from "../components/Forms/Button";
 
 import {
   getUniversityFromCache,
-  getFacilityFromCache,
+  getFaculityFromCache,
 } from "../services/universities";
 export default () => {
   const [h, setHeight] = useState(24);
@@ -18,7 +18,7 @@ export default () => {
   const [sort, setSort] = useState("default");
   const [isShowSortModal, setShowSortModal] = useState(false);
   const [unis, setUnis] = useState([]);
-  const [facis, setFacis] = useState([]);
+  const [facus, setFacus] = useState([]);
   const originUni = useRef([]);
   const [searchKey, setSearch] = useState("");
   const [viewUni, setViewUni] = useState("");
@@ -26,7 +26,7 @@ export default () => {
   useEffect(() => {
     (async () => {
       const _unis = await (await getUniversityFromCache()).json();
-      const _facis = await (await getFacilityFromCache()).json();
+      const _facus = await (await getFaculityFromCache()).json();
 
       let sorted = [];
       if (sort == "default") {
@@ -51,8 +51,8 @@ export default () => {
       if (originUni.current.length == 0) {
         originUni.current = sorted;
       }
-      console.log(_facis);
-      setFacis(_facis);
+      console.log(_facus);
+      setFacus(_facus);
       setUnis(sorted);
     })();
   }, [sort]);
@@ -71,7 +71,7 @@ export default () => {
     );
   }, [searchKey]);
 
-  const UniOrFaciList = () => {
+  const UniOrFacuList = () => {
     if (viewUni == "") {
       return unis.map(({ logo, university_name, university_id }) => (
         <>
@@ -95,7 +95,7 @@ export default () => {
     } else {
       return (
         <>
-          {facis
+          {facus
             .filter(({ university_id }) => university_id === viewUni)
             .map(
               ({
@@ -185,7 +185,7 @@ export default () => {
             )}
           </div>
 
-          <div className="overflow-scroll h-full mt-2">{UniOrFaciList()}</div>
+          <div className="overflow-scroll h-full mt-2">{UniOrFacuList()}</div>
         </div>
       </div>
     </div>

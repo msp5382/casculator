@@ -6,7 +6,7 @@ export const getUniversityFromCache = async () => {
   return unis;
 };
 
-export const getFacilityFromCache = async () => {
+export const getFaculityFromCache = async () => {
   let url = "https://tcas.sgp1.digitaloceanspaces.com/data/courses.json";
   const cache = await caches.open("uni");
   const cached = await cache.add(url);
