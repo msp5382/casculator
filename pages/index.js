@@ -1,6 +1,7 @@
-import Nav from "../components/Nav";
-import ProgressBar from "../components/Bars/ProgressBar";
 import { useEffect, useState, useRef } from "react";
+// Components
+import ProgressBar from "../components/Bars/ProgressBar";
+import Nav from "../components/Nav";
 export default () => {
   const landing = useRef(0);
   const startCountDown = 300;
