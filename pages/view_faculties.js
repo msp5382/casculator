@@ -9,12 +9,6 @@ import {
   getFaculityFromCache,
 } from "../services/universities";
 export default () => {
-  const [h, setHeight] = useState(24);
-  useEffect(() => {
-    setTimeout(() => {
-      setHeight("calc( 100% - 32px ) ");
-    }, 500);
-  }, []);
   const [sort, setSort] = useState("default");
   const [isShowSortModal, setShowSortModal] = useState(false);
   const [unis, setUnis] = useState([]);
