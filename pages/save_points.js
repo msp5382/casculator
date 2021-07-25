@@ -65,7 +65,7 @@ export default () => {
                       return (
                         <div
                           className={`${i == 1 ? "ml-2 mr-2" : ""
-                            } rounded-2xl w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
+                            } rounded-2xl w-1/4 text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
                         />
                       );
                     }

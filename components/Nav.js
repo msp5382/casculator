@@ -25,7 +25,7 @@ export default () => {
           </div>
           <div className="p-2 pt-4 hidden md:flex">
             {data.map((t, i) => (
-              <div key={i} onClick={() => router.push(t.path)} className="ml-3 text-sm text-white cursor-pointer">
+              <div key={i} onClick={() => router.push(t.path)} className="ml-12 text-sm text-white cursor-pointer">
                 {t.name}
               </div>
             ))}
@@ -46,9 +46,10 @@ export default () => {
             {data.map((t, i) => (
               <div
                 key={i}
+                onClick={() => router.push(t.path)}
                 className="cursor-pointer border-t border-base-light p-3"
               >
-                {t}
+                {t.name}
               </div>
             ))}
           </div>

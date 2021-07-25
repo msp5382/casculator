@@ -4,8 +4,8 @@ import ProgressBar from "../components/Bars/ProgressBar";
 import Nav from "../components/Nav";
 export default () => {
   const landing = useRef(0);
-  const startCountDown = 300;
-  const target = 3;
+  const startCountDown = 365;
+  const target = 10;
   const [day, setDay] = useState(startCountDown);
   const [showCalcButton, setShowCalcButton] = useState(true);
   useEffect(() => {
