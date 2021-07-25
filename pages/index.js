@@ -1,10 +1,11 @@
-import Nav from "../components/Nav";
-import ProgressBar from "../components/Bars/ProgressBar";
 import { useEffect, useState, useRef } from "react";
+// Components
+import ProgressBar from "../components/Bars/ProgressBar";
+import Nav from "../components/Nav";
 export default () => {
   const landing = useRef(0);
-  const startCountDown = 300;
-  const target = 3;
+  const startCountDown = 365;
+  const target = 10;
   const [day, setDay] = useState(startCountDown);
   const [showCalcButton, setShowCalcButton] = useState(true);
   useEffect(() => {
@@ -52,7 +53,7 @@ export default () => {
               onClick={() => (window.location = "/view_faculties")}
               className="cursor-pointer mb-5 lg:mb-12 rounded-full text-white text-xl p-5 bg-base"
             >
-              ดูคณะ
+              ดูสถิติคณะต่างๆ
             </div>
           </div>
           <div
