@@ -31,7 +31,7 @@ const Index = () => {
     >
       <Nav />
       <div
-        className="h-screen flex flex-col"
+        className="h-screen flex flex-col border-2"
         style={{ marginTop: -40, paddingTop: 40 }}
       >
         <div className="hidden md:block lg:block">
@@ -74,7 +74,10 @@ const Index = () => {
           </div>
         </div>
       </div>
-      <div className="block md:hidden mt-12">
+      <div
+        className="min-h-screen md:hidden flex flex-col justify-around border-2"
+        style={{ marginTop: -40, paddingTop: 40 }}>
+        <div className='h-4' />
         <ProgressBar></ProgressBar>
       </div>
     </div>
