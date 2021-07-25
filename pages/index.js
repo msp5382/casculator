@@ -31,7 +31,7 @@ const Index = () => {
     >
       <Nav />
       <div
-        className="h-screen flex flex-col border-2"
+        className="h-screen flex flex-col"
         style={{ marginTop: -40, paddingTop: 40 }}
       >
         <div className="hidden md:block lg:block">
@@ -59,7 +59,7 @@ const Index = () => {
           <div
             onClick={() => {
               window.scrollTo({
-                top: document.body.scrollHeight,
+                top: document.documentElement.scrollHeight,
                 behavior: "smooth",
               });
             }
@@ -75,7 +75,7 @@ const Index = () => {
         </div>
       </div>
       <div
-        className="min-h-screen md:hidden flex flex-col justify-around border-2"
+        className="min-h-screen md:hidden flex flex-col justify-around"
         style={{ marginTop: -40, paddingTop: 40 }}>
         <div className='h-4' />
         <ProgressBar></ProgressBar>
