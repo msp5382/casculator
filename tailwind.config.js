@@ -4,6 +4,12 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      transformOrigin: {
+        "0": "0%",
+      },
+      zIndex: {
+        "-1": "-1",
+      },
       colors: {
         base: "#C4883B",
         "base-light": "#dc9a44",

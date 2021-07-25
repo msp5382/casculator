@@ -1,6 +1,8 @@
 import { useState } from "react";
+// Components
 import Nav from "../components/Nav";
 import Button from "../components/Forms/Button";
+import CustomTextField from '../components/Forms/CustomTextField'
 export default () => {
   const gatpat = [
     ["GAT", "PAT1", "PAT2"],
@@ -57,19 +59,13 @@ export default () => {
                   {s.map((sub, i) => {
                     if (sub != "") {
                       return (
-                        <input
-                          className={`${
-                            i == 1 ? "ml-2 mr-2" : ""
-                          } rounded-2xl border border-base cursor-pointer w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
-                          placeholder={sub}
-                        />
+                        <CustomTextField label={sub} />
                       );
                     } else {
                       return (
                         <div
-                          className={`${
-                            i == 1 ? "ml-2 mr-2" : ""
-                          } rounded-2xl w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
+                          className={`${i == 1 ? "ml-2 mr-2" : ""
+                            } rounded-2xl w-1/4 text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
                         />
                       );
                     }
@@ -84,19 +80,13 @@ export default () => {
                   {s.map((sub, i) => {
                     if (sub != "") {
                       return (
-                        <input
-                          className={`${
-                            i == 1 ? "ml-2 mr-2" : ""
-                          } rounded-2xl border border-base cursor-pointer w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
-                          placeholder={sub}
-                        />
+                        <CustomTextField label={sub} />
                       );
                     } else {
                       return (
                         <div
-                          className={`${
-                            i == 1 ? "ml-2 mr-2" : ""
-                          } rounded-2xl w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
+                          className={`${i == 1 ? "ml-2 mr-2" : ""
+                            } rounded-2xl w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
                         />
                       );
                     }
@@ -111,19 +101,13 @@ export default () => {
                   {s.map((sub, i) => {
                     if (sub != "") {
                       return (
-                        <input
-                          className={`${
-                            i == 1 ? "ml-2 mr-2" : ""
-                          } rounded-2xl border border-base cursor-pointer w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
-                          placeholder={sub}
-                        />
+                        <CustomTextField label={sub} />
                       );
                     } else {
                       return (
                         <div
-                          className={`${
-                            i == 1 ? "ml-2 mr-2" : ""
-                          } rounded-2xl w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
+                          className={`${i == 1 ? "ml-2 mr-2" : ""
+                            } rounded-2xl w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
                         />
                       );
                     }
