@@ -6,7 +6,6 @@ export default () => {
   const router = useRouter();
   const hRef = useRef(null);
   const [isOpen, setOpen] = useState(false);
-  // const data = [["หน้าหลัก", "คะแนนของฉัน", "ข้อมูลคณะต่างๆ", "ระบบจัดอันดับ"], ['', '', '', '']];
   const data = [
     { name: "หน้าหลัก", path: "/" },
     { name: "คะแนนของฉัน", path: "/save_points" },
