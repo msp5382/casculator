@@ -63,7 +63,7 @@ export default () => {
                 behavior: "smooth",
               })
             }
-            className="pb-5 block md:hidden flex justify-center"
+            className="pb-5 md:hidden flex justify-center"
           >
             <ion-icon
               className="fill-current text-base"
