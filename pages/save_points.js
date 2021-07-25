@@ -1,6 +1,8 @@
 import { useState } from "react";
+// Components
 import Nav from "../components/Nav";
 import Button from "../components/Forms/Button";
+import CustomTextField from '../components/Forms/CustomTextField'
 export default () => {
   const gatpat = [
     ["GAT", "PAT1", "PAT2"],
@@ -51,32 +53,28 @@ export default () => {
           <>
             <div className="text-center font-bold text-xl">คะแนนของฉัน</div>
             <div className="">GAT PAT</div>
-            {gatpat.map((s, i) => {
-              return (
-                <div className="flex mt-4" key={i}>
-                  {s.map((sub, i) => {
-                    if (sub != "") {
-                      return (
-                        <input
-                          className={`${
-                            i == 1 ? "ml-2 mr-2" : ""
-                          } rounded-2xl border border-base cursor-pointer w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
-                          placeholder={sub}
-                        />
-                      );
-                    } else {
-                      return (
-                        <div
-                          className={`${
-                            i == 1 ? "ml-2 mr-2" : ""
-                          } rounded-2xl w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
-                        />
-                      );
-                    }
-                  })}
-                </div>
-              );
-            })}
+            <form>
+              {gatpat.map((s, i) => {
+                return (
+                  <div className="flex mt-4" key={i}>
+                    {s.map((sub, i) => {
+                      if (sub != "") {
+                        return (
+                          <CustomTextField label={sub} />
+                        );
+                      } else {
+                        return (
+                          <div
+                            className={`${i == 1 ? "ml-2 mr-2" : ""
+                              } rounded-2xl w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
+                          />
+                        );
+                      }
+                    })}
+                  </div>
+                );
+              })}
+            </form>
             <div className="mt-5">วิชาสามัญ</div>
             {saman.map((s, i) => {
               return (
@@ -85,18 +83,16 @@ export default () => {
                     if (sub != "") {
                       return (
                         <input
-                          className={`${
-                            i == 1 ? "ml-2 mr-2" : ""
-                          } rounded-2xl border border-base cursor-pointer w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
+                          className={`${i == 1 ? "ml-2 mr-2" : ""
+                            } rounded-2xl border border-base cursor-pointer w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
                           placeholder={sub}
                         />
                       );
                     } else {
                       return (
                         <div
-                          className={`${
-                            i == 1 ? "ml-2 mr-2" : ""
-                          } rounded-2xl w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
+                          className={`${i == 1 ? "ml-2 mr-2" : ""
+                            } rounded-2xl w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
                         />
                       );
                     }
@@ -112,18 +108,16 @@ export default () => {
                     if (sub != "") {
                       return (
                         <input
-                          className={`${
-                            i == 1 ? "ml-2 mr-2" : ""
-                          } rounded-2xl border border-base cursor-pointer w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
+                          className={`${i == 1 ? "ml-2 mr-2" : ""
+                            } rounded-2xl border border-base cursor-pointer w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
                           placeholder={sub}
                         />
                       );
                     } else {
                       return (
                         <div
-                          className={`${
-                            i == 1 ? "ml-2 mr-2" : ""
-                          } rounded-2xl w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
+                          className={`${i == 1 ? "ml-2 mr-2" : ""
+                            } rounded-2xl w-full text-center pt-2 pb-1 text-black focus:border-0 placeholder-gray-500::placeholder`}
                         />
                       );
                     }

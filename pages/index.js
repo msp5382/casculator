@@ -52,7 +52,7 @@ export default () => {
               onClick={() => (window.location = "/view_faculties")}
               className="cursor-pointer mb-5 lg:mb-12 rounded-full text-white text-xl p-5 bg-base"
             >
-              ดูคณะ
+              ดูสถิติคณะต่างๆ
             </div>
           </div>
           <div

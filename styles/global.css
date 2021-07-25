@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: "IBM PlexSans Thai";
   src: url("IBMPlexSansThai-Regular.woff2");
@@ -10,4 +14,13 @@
 html {
   font-family: "IBM PlexSans Thai";
   background-color: #f6f6f6;
+}
+
+input:focus-within ~ label,
+input:not(:placeholder-shown) ~ label {
+  @apply transform scale-75 -translate-y-3 z-0 ml-3 px-1 py-0;
+}
+
+input:focus-within ~ label {
+  @apply text-base-bg;
 }
