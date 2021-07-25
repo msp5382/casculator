@@ -12,7 +12,7 @@ const Index = () => {
     const id = setInterval(
       () =>
         setDay((prev) => {
-          if (prev - 1 != target) {
+          if (prev - 1 > target) {
             return prev - 1;
           } else {
             clearInterval(id);
@@ -27,7 +27,7 @@ const Index = () => {
   return (
     <div
       ref={landing}
-      className="w-screen h-web-kit overflow-scroll flex flex-col"
+      className="w-screen h-screen overflow-scroll flex flex-col"
     >
       <Nav />
       <div
@@ -38,7 +38,7 @@ const Index = () => {
           <ProgressBar></ProgressBar>
         </div>
 
-        <div className="h-full flex flex-col">
+        <div className="h-screen flex flex-col">
           <div className="my-auto">
             <div className="md:mt-12 font-bold text-center text-6xl lg:text-9xl">
               {day} day{day > 1 ? "s" : ""}
@@ -58,11 +58,10 @@ const Index = () => {
           </div>
           <div
             onClick={() => {
-              landing.current.scrollTo({
+              window.scrollTo({
                 top: document.body.scrollHeight,
                 behavior: "smooth",
               });
-              console.log('scroll')
             }
             }
             className="pb-5 md:hidden mb-8 flex justify-center"
