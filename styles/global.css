@@ -24,3 +24,8 @@ input:not(:placeholder-shown) ~ label {
 input:focus-within ~ label {
   @apply text-base-bg;
 }
+
+html,
+body {
+  margin: 0;
+}
