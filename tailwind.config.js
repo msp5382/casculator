@@ -4,6 +4,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      height: {
+        "web-kit": "-webkit-fill-available"
+      },
       transformOrigin: {
         "0": "0%",
       },

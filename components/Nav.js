@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/router";
 
 import Hamburger from "hamburger-react";
-export default () => {
+const Nav = () => {
   const router = useRouter();
   const hRef = useRef(null);
   const [isOpen, setOpen] = useState(false);
@@ -75,3 +75,5 @@ export default () => {
     </>
   );
 };
+
+export default Nav;

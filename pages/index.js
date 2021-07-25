@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 // Components
 import ProgressBar from "../components/Bars/ProgressBar";
 import Nav from "../components/Nav";
-export default () => {
+const Index = () => {
   const landing = useRef(0);
   const startCountDown = 365;
   const target = 10;
@@ -27,7 +27,7 @@ export default () => {
   return (
     <div
       ref={landing}
-      className="w-screen h-screen overflow-scroll flex flex-col"
+      className="w-screen h-web-kit overflow-scroll flex flex-col"
     >
       <Nav />
       <div
@@ -57,13 +57,15 @@ export default () => {
             </div>
           </div>
           <div
-            onClick={() =>
+            onClick={() => {
               landing.current.scrollTo({
                 top: document.body.scrollHeight,
                 behavior: "smooth",
-              })
+              });
+              console.log('scroll')
             }
-            className="pb-5 md:hidden flex justify-center"
+            }
+            className="pb-5 md:hidden mb-8 flex justify-center"
           >
             <ion-icon
               className="fill-current text-base"
@@ -79,3 +81,5 @@ export default () => {
     </div>
   );
 };
+
+export default Index;
