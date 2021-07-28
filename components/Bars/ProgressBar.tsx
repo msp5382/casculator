@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-export default (props) => {
+export default ({ ...props }) => {
   const [lineW, setLineW] = useState(30);
-  const container = useRef(null);
+  const container = useRef<HTMLDivElement>(null);
   const data = [
     "สมัครสอบ GAT/PAT",
     "สมัครสอบ วิชาสามัญ",
@@ -14,7 +14,7 @@ export default (props) => {
   ];
   const amount = data.length;
   useEffect(() => {
-    setLineW((container.current.offsetWidth - 20 - 40 * amount) / (amount - 1));
+    setLineW((container.current?.offsetWidth ?? 40 - 20 - 40 * amount) / (amount - 1));
   }, [container]);
 
   return (

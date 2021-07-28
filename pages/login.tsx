@@ -1,17 +1,17 @@
 import { useState } from "react";
 import Nav from "../components/Nav";
 import Button from "../components/Forms/Button";
-import TextBox from "../components/Forms/TextBox";
+import CustomTextField from "../components/Forms/CustomTextField";
 export default () => {
   return (
     <div className="w-screen h-screen overflow-scroll flex flex-col">
       <Nav />
       <div className="mx-auto p-5 w-full h-full max-w-sm">
         <div className="flex flex-col text-xl font-bold">เข้าสู่ระบบ</div>
-        <div className="text-xs mt-2">E-Mail</div>
-        <TextBox></TextBox>
-        <div className="text-xs mt-2">Password</div>
-        <TextBox></TextBox>
+        <div className='flex flex-col justify-items-center'>
+          <CustomTextField width='w-99/100 mt-4' label='Username' />
+          <CustomTextField width='w-99/100 mt-4' label='Password' />
+        </div>
         <div className="flex justify-end">
           <Button text="เข้าสู่ระบบ"></Button>
         </div>

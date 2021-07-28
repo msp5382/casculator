@@ -1,6 +1,26 @@
 import "tailwindcss/tailwind.css";
 import "../styles/global.css";
-const MyApp = ({ Component, pageProps }) => {
+import type { AppProps } from 'next/app'
+
+import * as React from 'react'
+
+declare module 'react' {
+  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+    custom?: string;
+    nomodule?: boolean,
+    src?: string,
+  }
+}
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "ion-icon": any,
+    }
+  }
+}
+
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Component {...pageProps} />

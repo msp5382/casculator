@@ -1,10 +1,18 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 
-export default ({ children, w, isShow, header, onClose }) => {
+type Props = {
+  children?: JSX.Element | JSX.Element[],
+  w: string,
+  isShow: boolean,
+  header?: string,
+  onClose: MouseEventHandler<HTMLDivElement>,
+}
+
+export default ({ children, w, isShow, header, onClose }: Props) => {
   if (isShow) {
     return (
       <>
-        <div className="absolute w-screen h-screen flex z-50 w-full">
+        <div className="absolute w-screen h-screen flex z-50">
           <div className={`mx-auto my-auto ${w ?? "max-w-lg"} w-full p-3`}>
             <div className="bg-white rounded">
               <div className="flex justify-between pl-3  pt-2 pr-3 border-b border-gray-200">

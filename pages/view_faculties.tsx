@@ -8,21 +8,22 @@ import {
   getUniversityFromCache,
   getFaculityFromCache,
 } from "../services/universities";
+import { univercitysType } from "../models/univercitys.model";
 export default () => {
   const [sort, setSort] = useState("default");
   const [isShowSortModal, setShowSortModal] = useState(false);
-  const [unis, setUnis] = useState([]);
+  const [unis, setUnis] = useState<univercitysType[]>([]);
   const [facus, setFacus] = useState([]);
-  const originUni = useRef([]);
+  const originUni = useRef<univercitysType[]>([]);
   const [searchKey, setSearch] = useState("");
   const [viewUni, setViewUni] = useState("");
 
   useEffect(() => {
     (async () => {
-      const _unis = await (await getUniversityFromCache()).json();
-      const _facus = await (await getFaculityFromCache()).json();
+      const _unis: univercitysType[] = await (await getUniversityFromCache())?.json()
+      const _facus = await (await getFaculityFromCache())?.json()
 
-      let sorted = [];
+      let sorted: univercitysType[] = [];
       if (sort == "default") {
         sorted = _unis.sort((a, b) => {
           if (parseInt(a.university_id) > parseInt(b.university_id)) return 1;
@@ -65,9 +66,15 @@ export default () => {
     );
   }, [searchKey]);
 
+  // type Props = {
+  //   logo: string,
+  //   university_name: string,
+  //   university_id: string
+  // }
+  // logo not exist
   const UniOrFacuList = () => {
     if (viewUni == "") {
-      return unis.map(({ logo, university_name, university_id }) => (
+      return unis.map(({ university_name, university_id }) => (
         <>
           <div
             onClick={() => setViewUni(university_id)}
@@ -75,7 +82,7 @@ export default () => {
           >
             <img
               className="h-8 w-8 rounded-full"
-              src={logo ?? "chula_test.png"}
+              src={"chula_test.png"}
             />
             <div className="flex flex-col justify-center w-full pl-4">
               <div className="text-sm">{university_name}</div>
@@ -118,7 +125,7 @@ export default () => {
     <div className="w-screen h-screen overflow-scroll flex flex-col">
       <Nav />
       <Modal
-        w="max-w-xs"
+        w={"max-w-xs"}
         isShow={isShowSortModal}
         onClose={() => setShowSortModal(false)}
       >
@@ -138,7 +145,7 @@ export default () => {
         <div className="flex justify-end">
           <Button
             onClick={() => setShowSortModal(false)}
-            text="เรียงลำดับ"
+            text={"เรียงลำดับ"}
           ></Button>
         </div>
       </Modal>
@@ -151,7 +158,7 @@ export default () => {
             {viewUni == "" ? (
               <>
                 <Search
-                  onChange={(e) => setSearch(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
                   value={searchKey}
                 />
 

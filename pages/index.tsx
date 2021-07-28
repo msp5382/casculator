@@ -3,7 +3,6 @@ import { useEffect, useState, useRef } from "react";
 import ProgressBar from "../components/Bars/ProgressBar";
 import Nav from "../components/Nav";
 const Index = () => {
-  const landing = useRef(0);
   const startCountDown = 365;
   const target = 10;
   const [day, setDay] = useState(startCountDown);
@@ -26,7 +25,6 @@ const Index = () => {
 
   return (
     <div
-      ref={landing}
       className="w-screen h-screen overflow-scroll flex flex-col"
     >
       <Nav />
@@ -50,7 +48,6 @@ const Index = () => {
           </div>
           <div className="flex justify-center">
             <div
-              onClick={() => (window.location = "/view_faculties")}
               className="cursor-pointer mb-5 lg:mb-12 rounded-full text-white text-xl p-5 bg-base"
             >
               ดูสถิติคณะต่างๆ

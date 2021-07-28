@@ -1,3 +1,5 @@
+import { univercitysType } from "../models/univercitys.model";
+
 export const getUniversityFromCache = async () => {
   let url = "https://tcas.sgp1.digitaloceanspaces.com/data/universities.json";
   const cache = await caches.open("uni");

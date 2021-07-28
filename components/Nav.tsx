@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Hamburger from "hamburger-react";
 const Nav = () => {
   const router = useRouter();
-  const hRef = useRef(null);
+  const hRef = useRef<HTMLDivElement>(null);
   const [isOpen, setOpen] = useState(false);
   const data = [
     { name: "หน้าหลัก", path: "/" },
@@ -35,7 +35,7 @@ const Nav = () => {
           </div>
 
           <div
-            onClick={() => (window.location = "/login")}
+            onClick={() => router.push('/login')}
             className="p-2 pt-2 hidden md:flex text-sm "
           >
             <div className="rounded p-2 bg-base-light text-white cursor-pointer hover:bg-white hover:text-black">
@@ -55,7 +55,6 @@ const Nav = () => {
           <div className="bg-base text-sm text-white">
             {data.map((t, i) => (
               <div
-                onClick={() => (window.location = path[i])}
                 key={i}
                 onClick={() => router.push(t.path)}
                 className="cursor-pointer border-t border-base-light p-3"
