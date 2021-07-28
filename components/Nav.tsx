@@ -35,7 +35,7 @@ const Nav = () => {
           </div>
 
           <div
-            onClick={() => router.push('/login')}
+            onClick={() => router.push('/sign_in')}
             className="p-2 pt-2 hidden md:flex text-sm "
           >
             <div className="rounded p-2 bg-base-light text-white cursor-pointer hover:bg-white hover:text-black">

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export default ({ ...props }) => {
+const ProgressBar = ({ ...props }) => {
   const [lineW, setLineW] = useState(77);
   const container = useRef<HTMLDivElement>(null);
   const data = [
@@ -106,3 +106,5 @@ export default ({ ...props }) => {
     </>
   );
 };
+
+export default ProgressBar;
