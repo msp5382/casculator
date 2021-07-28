@@ -53,6 +53,7 @@ const Index = () => {
               ดูสถิติคณะต่างๆ
             </div>
           </div>
+
           <div
             onClick={() => {
               window.scrollTo({

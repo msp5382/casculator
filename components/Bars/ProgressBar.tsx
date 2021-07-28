@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 export default ({ ...props }) => {
-  const [lineW, setLineW] = useState(30);
+  const [lineW, setLineW] = useState(77);
   const container = useRef<HTMLDivElement>(null);
   const data = [
     "สมัครสอบ GAT/PAT",
@@ -13,8 +13,10 @@ export default ({ ...props }) => {
     "ประกาศ TCAS รอบ 3",
   ];
   const amount = data.length;
+  const cWidth = container.current?.offsetWidth ?? 40;
   useEffect(() => {
-    setLineW((container.current?.offsetWidth ?? 40 - 20 - 40 * amount) / (amount - 1));
+    console.log(container.current?.offsetWidth);
+    // setLineW((cWidth- 180 - 40 * amount) / (amount - 1));
   }, [container]);
 
   return (

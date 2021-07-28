@@ -3,7 +3,7 @@ import { useState } from "react";
 import Nav from "../components/Nav";
 import Button from "../components/Forms/Button";
 import CustomTextField from '../components/Forms/CustomTextField'
-export default () => {
+const savePoints = () => {
   const gatpat = [
     ["GAT", "PAT1", "PAT2"],
     ["PAT3", "PAT4", "PAT5"],
@@ -59,7 +59,7 @@ export default () => {
                   {s.map((sub, i) => {
                     if (sub != "") {
                       return (
-                        <CustomTextField label={sub} />
+                        <CustomTextField key={i} label={sub} />
                       );
                     } else {
                       return (
@@ -142,3 +142,5 @@ export default () => {
     </div>
   );
 };
+
+export default savePoints;
