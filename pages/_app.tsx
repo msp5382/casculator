@@ -7,7 +7,6 @@ import * as React from 'react'
 declare module 'react' {
   interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
     custom?: string;
-    nomodule?: boolean,
     src?: string,
   }
 }
@@ -29,7 +28,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
       ></script>
       <script
-        nomodule
+        noModule
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
       ></script>
     </>
