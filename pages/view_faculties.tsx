@@ -35,12 +35,13 @@ const viewFaculties = () => {
     ref: springApi,
   })
   const transApi = useSpringRef()
-  const transition = useTransition(unis ? unis : [], {
+  let filter_facus = facus.filter(({ university_id }) => university_id == viewUni)
+  const transition = useTransition(viewUni == "" ? unis : filter_facus, {
     ref: transApi,
-    trail: 2000 / unis.length,
+    trail: facus ? 2000 / filter_facus.length : 2000 / unis.length,
     from: { opacity: 0, scale: 0 },
     enter: { opacity: 1, scale: 1 },
-    leave: { opacity: 0, scale: 0.5, x: 10 },
+    // leave: { opacity: 0, scale: 0.5, x: 10 },
   })
 
   useChain([springApi, transApi])
@@ -122,30 +123,16 @@ const viewFaculties = () => {
       ));
 
     } else {
-      return (
-        <>
-          {facus
-            .filter(({ university_id }) => university_id === viewUni)
-            .map(
-              ({
-                faculty_name_th,
-                program_type_name_th,
-                field_name_th,
-                major_name_th,
-              }) => (
-                <>
-                  <div className="flex bg-thin-white rounded p-3 mt-2">
-                    <div className="flex flex-col justify-center w-full pl-4">
-                      <div className="text-sm">{faculty_name_th}</div>
-                      <div className="text-xs text-gray-400">
-                        {field_name_th} {major_name_th} {program_type_name_th}
-                      </div>
-                    </div>
-                  </div>
-                </>
-              )
-            )}
-        </>
+      return (transition((style, item) => (<>
+        <animated.div key={item.faculty_id} className="flex bg-thin-white rounded p-3 mt-2" style={{ ...style }}>
+          <div className="flex flex-col justify-center w-full pl-4">
+            <div className="text-sm">{item.faculty_name_th}</div>
+            <div className="text-xs text-gray-400">
+              {item.field_name_th} {item.major_name_th} {item.program_type_name_th}
+            </div>
+          </div>
+        </animated.div>
+      </>))
       );
     }
   };
