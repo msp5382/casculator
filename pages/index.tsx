@@ -2,7 +2,8 @@ import { useEffect, useState, useRef } from "react";
 // Components
 import ProgressBar from "../components/Bars/ProgressBar";
 import Nav from "../components/Nav";
-import Number from "../components/animated/CountDown.animated"
+import CountDown from "../components/animated/CountDown.animated"
+import router from "next/router";
 
 const Index = () => {
   const startCountDown = 365;
@@ -24,10 +25,11 @@ const Index = () => {
 
         <div className="h-screen flex flex-col items-center">
           <div className="my-auto">
-            <Number />
+            <CountDown />
           </div>
           <div className="flex justify-center">
             <div
+              onClick={() => router.push('/view_faculties')}
               className="cursor-pointer mb-5 lg:mb-12 rounded-full text-white text-xl p-5 bg-base"
             >
               ดูสถิติคณะต่างๆ

@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { useSpring, useChain, useSpringRef, config, animated, useTransition } from "react-spring";
+// Component
 import Nav from "../components/Nav";
 import Search from "../components/Forms/Search";
 import Modal from "../components/Modal";
@@ -9,7 +11,8 @@ import {
   getFaculityFromCache,
 } from "../services/universities";
 import { univercitysType } from "../models/univercitys.model";
-export default () => {
+import { Property } from "csstype";
+const viewFaculties = () => {
   const [sort, setSort] = useState("default");
   const [isShowSortModal, setShowSortModal] = useState(false);
   const [unis, setUnis] = useState<univercitysType[]>([]);
@@ -17,6 +20,30 @@ export default () => {
   const originUni = useRef<univercitysType[]>([]);
   const [searchKey, setSearch] = useState("");
   const [viewUni, setViewUni] = useState("");
+
+  // for animated
+  const springApi = useSpringRef();
+  const { y, opacity } = useSpring({
+    from: {
+      y: '50px',
+      opacity: 0.0,
+    },
+    y: '0px',
+    opacity: 1.0,
+    delay: 250,
+    config: config.molasses,
+    ref: springApi,
+  })
+  const transApi = useSpringRef()
+  const transition = useTransition(unis ? unis : [], {
+    ref: transApi,
+    trail: 2000 / unis.length,
+    from: { opacity: 0, scale: 0 },
+    enter: { opacity: 1, scale: 1 },
+    leave: { opacity: 0, scale: 0.5, x: 10 },
+  })
+
+  useChain([springApi, transApi])
 
   useEffect(() => {
     (async () => {
@@ -74,10 +101,10 @@ export default () => {
   // logo not exist
   const UniOrFacuList = () => {
     if (viewUni == "") {
-      return unis.map(({ university_name, university_id }) => (
-        <>
+      return transition((style, item) => (
+        <animated.div key={item.university_id} style={{ ...style }}>
           <div
-            onClick={() => setViewUni(university_id)}
+            onClick={() => setViewUni(item.university_id)}
             className="flex bg-thin-white rounded p-3 mt-2"
           >
             <img
@@ -85,14 +112,15 @@ export default () => {
               src={"chula_test.png"}
             />
             <div className="flex flex-col justify-center w-full pl-4">
-              <div className="text-sm">{university_name}</div>
+              <div className="text-sm">{item.university_name}</div>
             </div>
             <div className="flex flex-col justify-center pl-4">
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </div>
           </div>
-        </>
+        </animated.div>
       ));
+
     } else {
       return (
         <>
@@ -150,9 +178,10 @@ export default () => {
         </div>
       </Modal>
       <div className="mx-auto p-5 w-full h-full max-w-lg">
-        <div
+        <animated.div
           className="flex flex-col bg-base rounded-lg p-4"
-          style={{ height: "80vh" }}
+          // TODO:
+          style={{ height: "80vh", y, opacity }}
         >
           <div className="flex">
             {viewUni == "" ? (
@@ -187,8 +216,12 @@ export default () => {
           </div>
 
           <div className="overflow-scroll h-full mt-2">{UniOrFacuList()}</div>
-        </div>
+        </animated.div>
       </div>
     </div>
   );
 };
+
+export default viewFaculties;
+
+
