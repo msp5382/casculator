@@ -10,13 +10,13 @@ import {
   getUniversityFromCache,
   getFaculityFromCache,
 } from "../services/universities";
-import { univercitysType } from "../models/univercitys.model";
+import { FacultiesType, univercitysType } from "../models/univercitys.model";
 import { Property } from "csstype";
 const viewFaculties = () => {
   const [sort, setSort] = useState("default");
   const [isShowSortModal, setShowSortModal] = useState(false);
   const [unis, setUnis] = useState<univercitysType[]>([]);
-  const [facus, setFacus] = useState([]);
+  const [facus, setFacus] = useState<FacultiesType[]>([]);
   const originUni = useRef<univercitysType[]>([]);
   const [searchKey, setSearch] = useState("");
   const [viewUni, setViewUni] = useState("");
@@ -36,7 +36,14 @@ const viewFaculties = () => {
   })
   const transApi = useSpringRef()
   let filter_facus = facus.filter(({ university_id }) => university_id == viewUni)
-  const transition = useTransition(viewUni == "" ? unis : filter_facus, {
+  const transitionUnis = useTransition(unis, {
+    ref: transApi,
+    trail: facus ? 2000 / filter_facus.length : 2000 / unis.length,
+    from: { opacity: 0, scale: 0 },
+    enter: { opacity: 1, scale: 1 },
+    // leave: { opacity: 0, scale: 0.5, x: 10 },
+  })
+  const transitionFaculs = useTransition(filter_facus, {
     ref: transApi,
     trail: facus ? 2000 / filter_facus.length : 2000 / unis.length,
     from: { opacity: 0, scale: 0 },
@@ -102,7 +109,7 @@ const viewFaculties = () => {
   // logo not exist
   const UniOrFacuList = () => {
     if (viewUni == "") {
-      return transition((style, item) => (
+      return transitionUnis((style, item) => (
         <animated.div key={item.university_id} style={{ ...style }}>
           <div
             onClick={() => setViewUni(item.university_id)}
@@ -123,7 +130,7 @@ const viewFaculties = () => {
       ));
 
     } else {
-      return (transition((style, item) => (<>
+      return (transitionFaculs((style, item) => (<>
         <animated.div key={item.faculty_id} className="flex bg-thin-white rounded p-3 mt-2" style={{ ...style }}>
           <div className="flex flex-col justify-center w-full pl-4">
             <div className="text-sm">{item.faculty_name_th}</div>
