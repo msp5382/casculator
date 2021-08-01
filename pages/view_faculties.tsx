@@ -5,13 +5,10 @@ import Nav from "../components/Nav";
 import Search from "../components/Forms/Search";
 import Modal from "../components/Modal";
 import Button from "../components/Forms/Button";
-
-import {
-  getUniversityFromCache,
-  getFaculityFromCache,
-} from "../services/universities";
+// Data
+import { getUniversityFromCache, getFaculityFromCache } from "../services/universities";
 import { FacultiesType, univercitysType } from "../models/univercitys.model";
-import { Property } from "csstype";
+
 const viewFaculties = () => {
   const [sort, setSort] = useState("default");
   const [isShowSortModal, setShowSortModal] = useState(false);
@@ -23,6 +20,8 @@ const viewFaculties = () => {
 
   // for animated
   const springApi = useSpringRef();
+  const transUniApi = useSpringRef()
+  const transFaculsApi = useSpringRef()
   const { y, opacity } = useSpring({
     from: {
       y: '50px',
@@ -34,24 +33,25 @@ const viewFaculties = () => {
     config: config.molasses,
     ref: springApi,
   })
-  const transApi = useSpringRef()
   let filter_facus = facus.filter(({ university_id }) => university_id == viewUni)
   const transitionUnis = useTransition(unis, {
-    ref: transApi,
+    ref: transUniApi,
     trail: facus ? 2000 / filter_facus.length : 2000 / unis.length,
     from: { opacity: 0, scale: 0 },
     enter: { opacity: 1, scale: 1 },
     // leave: { opacity: 0, scale: 0.5, x: 10 },
   })
   const transitionFaculs = useTransition(filter_facus, {
-    ref: transApi,
+    // ref: transFaculsApi,
     trail: facus ? 2000 / filter_facus.length : 2000 / unis.length,
     from: { opacity: 0, scale: 0 },
     enter: { opacity: 1, scale: 1 },
     // leave: { opacity: 0, scale: 0.5, x: 10 },
   })
 
-  useChain([springApi, transApi])
+  console.log(facus.length)
+
+  useChain([springApi, transUniApi])
 
   useEffect(() => {
     (async () => {
@@ -110,7 +110,7 @@ const viewFaculties = () => {
   const UniOrFacuList = () => {
     if (viewUni == "") {
       return transitionUnis((style, item) => (
-        <animated.div key={item.university_id} style={{ ...style }}>
+        <animated.div key={item.university_id} style={{ ...style, userSelect: "none" }}>
           <div
             onClick={() => setViewUni(item.university_id)}
             className="flex bg-thin-white rounded p-3 mt-2"
@@ -131,7 +131,7 @@ const viewFaculties = () => {
 
     } else {
       return (transitionFaculs((style, item) => (<>
-        <animated.div key={item.faculty_id} className="flex bg-thin-white rounded p-3 mt-2" style={{ ...style }}>
+        <animated.div key={item.faculty_id} className="flex bg-thin-white rounded p-3 mt-2" style={{ ...style, userSelect: "none" }}>
           <div className="flex flex-col justify-center w-full pl-4">
             <div className="text-sm">{item.faculty_name_th}</div>
             <div className="text-xs text-gray-400">
@@ -209,7 +209,7 @@ const viewFaculties = () => {
             )}
           </div>
 
-          <div className="overflow-scroll h-full mt-2">{UniOrFacuList()}</div>
+          <div className="overflow-scroll h-full mt-2 scrollbar-hide">{UniOrFacuList()}</div>
         </animated.div>
       </div>
     </div>

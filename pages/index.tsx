@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { useRouter } from 'next/router'
 // Components
 import ProgressBar from "../components/Bars/ProgressBar";
 import Nav from "../components/Nav";
@@ -6,12 +7,25 @@ import CountDown from "../components/animated/CountDown.animated"
 import router from "next/router";
 
 const Index = () => {
-  const startCountDown = 365;
-  const target = 10;
-  const [showCalcButton, setShowCalcButton] = useState(true);
+  const donateRef = useRef<null | HTMLDivElement>(null);
+  const mainRef = useRef<null | HTMLDivElement>(null);
+  const proRef = useRef<null | HTMLDivElement>(null);
+  const router = useRouter();
+  const { page } = router.query;
+  // const startCountDown = 365;
+  // const target = 10;
+  // const [showCalcButton, setShowCalcButton] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      if (page == 'donate') {
+        donateRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }, 800)
+  }, [page])
 
   return (
     <div
+      ref={mainRef}
       className="w-screen h-screen overflow-scroll flex flex-col"
     >
       <Nav />
@@ -38,13 +52,16 @@ const Index = () => {
 
           <div
             onClick={() => {
-              window.scrollTo({
-                top: document.documentElement.scrollHeight,
-                behavior: "smooth",
-              });
+              if (mainRef.current) {
+                if (mainRef.current.offsetWidth > 768) {
+                  donateRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                } else {
+                  proRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }
+              }
             }
             }
-            className="pb-5 md:hidden mb-8 flex justify-center"
+            className="pb-5 mb-8 flex justify-center"
           >
             <ion-icon
               className="fill-current text-base"
@@ -57,8 +74,18 @@ const Index = () => {
       <div
         className="min-h-screen md:hidden flex flex-col justify-around"
         style={{ marginTop: -40, paddingTop: 40 }}>
-        <div className='h-4' />
+        <div ref={proRef} className='h-4' />
         <ProgressBar></ProgressBar>
+      </div>
+      <div
+        className="h-screen flex flex-col"
+        style={{ marginTop: -40, paddingTop: 40 }}
+      >
+        <div className="h-screen flex flex-col items-center">
+          <div ref={donateRef} className="my-auto text-lg">
+            ร่วมสนับสนุนพวกเราได้ที่
+          </div>
+        </div>
       </div>
     </div>
   );

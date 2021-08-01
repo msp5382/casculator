@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
 const ProgressBar = ({ ...props }) => {
-  const [lineW, setLineW] = useState(77);
+  const lineW = 77;
   const container = useRef<HTMLDivElement>(null);
   const data = [
     "สมัครสอบ GAT/PAT",
@@ -13,11 +13,6 @@ const ProgressBar = ({ ...props }) => {
     "ประกาศ TCAS รอบ 3",
   ];
   const amount = data.length;
-  const cWidth = container.current?.offsetWidth ?? 40;
-  useEffect(() => {
-    console.log(container.current?.offsetWidth);
-    // setLineW((cWidth- 180 - 40 * amount) / (amount - 1));
-  }, [container]);
 
   return (
     <>
@@ -64,9 +59,7 @@ const ProgressBar = ({ ...props }) => {
                   >
                     {t}
                   </div>
-                ) : (
-                  <></>
-                )}
+                ) : null}
               </>
             ))}
           </div>
@@ -78,9 +71,7 @@ const ProgressBar = ({ ...props }) => {
                   <div className="flex w-10 justify-center">
                     <div className="border border-base w-0 h-5"></div>
                   </div>
-                ) : (
-                  <></>
-                )}
+                ) : null}
               </>
             ))}
           </div>
@@ -95,9 +86,7 @@ const ProgressBar = ({ ...props }) => {
                   >
                     {t}
                   </div>
-                ) : (
-                  <></>
-                )}
+                ) : null}
               </>
             ))}
           </div>

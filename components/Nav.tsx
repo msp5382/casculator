@@ -11,6 +11,7 @@ const Nav = () => {
     { name: "คะแนนของฉัน", path: "/save_points" },
     { name: "ข้อมูลคณะต่างๆ", path: "/view_faculties" },
     { name: "ระบบจัดอันดับ", path: "" },
+    { name: "วิธีการจัดอันดับ", path: "" },
   ];
   return (
     <>

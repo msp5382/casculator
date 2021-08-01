@@ -355,7 +355,7 @@ export interface FacultiesType {
     created_at: string;
     created_by_id: string;
     university_type_id: string;
-    university_type_name_th: UniversityTypeNameTh;
+    university_type_name_th: string;
     university_id: string;
     university_name_th: string;
     university_name_en?: string;
@@ -373,87 +373,16 @@ export interface FacultiesType {
     program_running_number: string;
     program_name_th: string;
     program_name_en?: string;
-    program_type_id: ID;
-    program_type_name_th: ProgramTypeNameTh;
+    program_type_id: string;
+    program_type_name_th: string;
     program_id: string;
     number_acceptance_mko_2?: number;
     institute_partners_th?: string;
     country_partners_th?: string;
-    major_id?: ID;
+    major_id?: string;
     major_name_th?: string;
     major_name_en?: string;
     major_acceptance_number?: number;
     program_partners_id?: string;
     program_partners_inter_name?: string;
-}
-
-export enum ID {
-    A = "A",
-    B = "B",
-    C = "C",
-    D = "D",
-    E = "E",
-    F = "F",
-    G = "G",
-    H = "H",
-    I = "I",
-    J = "J",
-    K = "K",
-    L = "L",
-    M = "M",
-    N = "N",
-    O = "O",
-    P = "P",
-    Q = "Q",
-}
-
-export enum ProgramTypeNameTh {
-    DoubleDegreeInter = "Double Degree - นานาชาติ",
-    DoubleDegreeInterNormal = "Double Degree - นานาชาติ ปกติ",
-    DoubleDegreeInterSpecial = "Double Degree - นานาชาติ พิเศษ",
-    DoubleDegreeThai = "Double Degree - ภาษาไทย",
-    DoubleDegreeThaiNormal = "Double Degree - ภาษาไทย ปกติ",
-    DoubleDegreeThaiSpecial = "Double Degree - ภาษาไทย พิเศษ",
-    FluffyThaiNormal = "ภาษาไทย(ปกติ)",
-    JointDegreeInter = "Joint Degree - นานาชาติ",
-    JointDegreeThai = "Joint degree ภาษาไทย",
-    ProgramTypeNameThJointDegreeThai = "Joint Degree ภาษาไทย",
-    ProgramTypeNameThConNormal = "ต่อเนื่องปกติ",
-    ProgramTypeNameThConSpecial = "ต่อเนื่องพิเศษ",
-    ProgramTypeNameThThaiNormal = "ภาษาไทย  ปกติ",
-    PurpleJointDegreeThai = "Joint Degree - ภาษาไทย",
-    PurpleThaiNormal = "ภาษาไทยปกติ",
-    conNormal = "ต่อเนื่อง ปกติ",
-    conSpecial = "ต่อเนื่อง พิเศษ",
-    inter = "นานาชาติ",
-    interNormal = "นานาชาติ ปกติ",
-    interLang = "ภาษาต่างประเทศ",
-    interLangNormal = "ภาษาต่างประเทศ ปกติ",
-    thai = "ภาษาไทย",
-    thaiOutTime = "ภาษาไทย นอกเวลา",
-    thaiNormal = "ภาษาไทย ปกติ",
-    thaiNormalEnEng = "ภาษาไทย ปกติ (เสริมทักษะภาษาอังกฤษ)",
-    thaiSpecial = "ภาษาไทย พิเศษ",
-    thaiSpecialPlus = "ภาษาไทย พิเศษ / สมทบ",
-    thai_Normal = "ภาษาไทย ภาคปกติ",
-    thai_Special = "ภาษาไทย ภาคพิเศษ",
-    thaiSpecialroom = "ภาษาไทย โครงการพิเศษ",
-    foodSci = "วท.บ. วิทยาศาสตร์การอาหารและโภชนาการ",
-    twoLang = "สองภาษา",
-    twoLangNormal = "สองภาษา ปกติ",
-    threeLang = "สามภาษา",
-    twoLangRoom = "หลักสูตรสองภาษา",
-    transNormal = "เทียบโอน ปกติ",
-    transTwoDegSpecial = "เทียบโอน ปริญญาใบที่ 2 พิเศษ",
-    transSpecial = "เทียบโอน พิเศษ",
-}
-
-export enum UniversityTypeNameTh {
-    UniversityTypeNameThTPO = "ทปอ",
-    UniversityTypeNameThMTR = "มทร.",
-    other = "กลุ่มอื่นๆ",
-    TPO = "ทปอ.",
-    MTR = "มทร",
-    MRP = "มรภ.",
-    individual = "เอกชน",
 }
