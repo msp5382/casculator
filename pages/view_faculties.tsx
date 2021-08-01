@@ -36,14 +36,14 @@ const viewFaculties = () => {
   let filter_facus = facus.filter(({ university_id }) => university_id == viewUni)
   const transitionUnis = useTransition(unis, {
     ref: transUniApi,
-    trail: facus ? 2000 / filter_facus.length : 2000 / unis.length,
+    trail: 500 / unis.length,
     from: { opacity: 0, scale: 0 },
     enter: { opacity: 1, scale: 1 },
     // leave: { opacity: 0, scale: 0.5, x: 10 },
   })
   const transitionFaculs = useTransition(filter_facus, {
     // ref: transFaculsApi,
-    trail: facus ? 2000 / filter_facus.length : 2000 / unis.length,
+    trail: 500 / filter_facus.length,
     from: { opacity: 0, scale: 0 },
     enter: { opacity: 1, scale: 1 },
     // leave: { opacity: 0, scale: 0.5, x: 10 },
