@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useSpring, useChain, useSpringRef, config, animated, useTransition } from "react-spring";
 // Component
 import Nav from "../components/Nav";
@@ -17,7 +17,26 @@ const viewFaculties = () => {
   const originUni = useRef<univercitysType[]>([]);
   const [searchKey, setSearch] = useState("");
   const [viewUni, setViewUni] = useState("");
+  const [loadPage, setLoadPage] = useState(1);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
+  const onFaculScroll = () => {
+    const pos = scrollRef.current?.scrollTop ?? 64 * unis.length
+    const prePage = Math.floor(pos / (960))
+    const curentPagePos = pos - 960 * prePage;
+    if (curentPagePos > 384) {
+      if (loadPage > prePage + 2) {
+        return
+      }
+      setLoadPage(prePage + 2);
+    }
+  }
+
+  useEffect(() => {
+    const uniAmount = 15 * loadPage;
+    const originLen = originUni.current.length
+    setUnis(originUni.current.slice(0, (uniAmount - 1) > originLen ? originLen : uniAmount))
+  }, [loadPage]);
   // for animated
   const springApi = useSpringRef();
   const transUniApi = useSpringRef()
@@ -49,8 +68,6 @@ const viewFaculties = () => {
     // leave: { opacity: 0, scale: 0.5, x: 10 },
   })
 
-  console.log(facus.length)
-
   useChain([springApi, transUniApi])
 
   useEffect(() => {
@@ -78,10 +95,7 @@ const viewFaculties = () => {
           return 0;
         });
       }
-      if (originUni.current.length == 0) {
-        originUni.current = sorted;
-      }
-      console.log(_facus);
+      originUni.current = sorted;
       setFacus(_facus);
       setUnis(sorted);
     })();
@@ -209,7 +223,7 @@ const viewFaculties = () => {
             )}
           </div>
 
-          <div className="overflow-scroll h-full mt-2 scrollbar-hide">{UniOrFacuList()}</div>
+          <div onScroll={onFaculScroll} ref={scrollRef} className="overflow-scroll h-full mt-2 scrollbar-hide">{UniOrFacuList()}</div>
         </animated.div>
       </div>
     </div>

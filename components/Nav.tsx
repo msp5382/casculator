@@ -15,7 +15,7 @@ const Nav = () => {
   ];
   return (
     <>
-      <div className="fixed w-full z-50" ref={hRef}>
+      <div className="fixed w-full z-50 ticky top-0" ref={hRef}>
         <div className="bg-base flex justify-between">
           <div
             onClick={() => router.push("/")}

@@ -31,7 +31,6 @@ const Index = () => {
       <Nav />
       <div
         className="h-screen flex flex-col"
-        style={{ marginTop: -40, paddingTop: 40 }}
       >
         <div className="hidden md:block lg:block">
           <ProgressBar></ProgressBar>
@@ -63,11 +62,13 @@ const Index = () => {
             }
             className="pb-5 mb-8 flex justify-center"
           >
-            <ion-icon
-              className="fill-current text-base"
-              size="large"
-              name="chevron-down-outline"
-            ></ion-icon>
+            <div className="animate-bounce">
+              <ion-icon
+                className="fill-current text-base"
+                size="large"
+                name="chevron-down-outline"
+              ></ion-icon>
+            </div>
           </div>
         </div>
       </div>
