@@ -24,7 +24,7 @@ const viewFaculties = () => {
     const pos = scrollRef.current?.scrollTop ?? 64 * unis.length
     const prePage = Math.floor(pos / (960))
     const curentPagePos = pos - 960 * prePage;
-    if (curentPagePos > 384) {
+    if (curentPagePos > 320) {
       if (loadPage > prePage + 2) {
         return
       }
