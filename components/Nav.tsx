@@ -28,7 +28,7 @@ const Nav = () => {
               <div
                 key={i}
                 onClick={() => router.push(t.path)}
-                className="ml-12 text-sm text-white cursor-pointer"
+                className="ml-9 text-sm text-white cursor-pointer"
               >
                 {t.name}
               </div>

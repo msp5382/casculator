@@ -11,11 +11,11 @@ const CountDown = () => {
     })
     return (
         <>
-            <div className="flex flex-row md:mt-12 font-bold text-center text-6xl lg:text-9xl">
+            <div className="flex flex-row md:mt-12 font-bold text-center text-6xl md:text-9xl">
                 <animated.div>{number.to(n => n.toFixed(0))}</animated.div>
                 <div className='ml-6'>day{target > 1 ? "s" : ""}</div>
             </div>
-            <div className="flex flex-row font-bold text-center text-lg  lg:text-2xl justify-center">
+            <div className="flex flex-row font-bold text-center text-lg  md:text-2xl justify-center">
                 <animated.div>{number.to(n => n.toFixed(0))}</animated.div>
                 <div className='ml-2 mr-2'>day{target > 1 ? "s" : ""}</div>
                 <animated.div>{number.to(n => n.toFixed(0))}</animated.div>
