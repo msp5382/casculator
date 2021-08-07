@@ -1,13 +1,13 @@
 import { CheckIcon } from '@heroicons/react/solid'
 
 const steps = [
-    { name: 'Step 1', href: '#', status: 'complete' },
-    { name: 'Step 2', href: '#', status: 'complete' },
-    { name: 'Step 3', href: '#', status: 'current' },
-    { name: 'Step 4', href: '#', status: 'upcoming' },
-    { name: 'Step 5', href: '#', status: 'upcoming' },
-    { name: 'Step 6', href: '#', status: 'upcoming' },
-    { name: 'Step 7', href: '#', status: 'upcoming' },
+    { name: 'สมัครสอบ GAT/PAT', href: '#', status: 'complete' },
+    { name: 'สมัครสอบ วิชาสามัญ', href: '#', status: 'complete' },
+    { name: 'สอบ GAT/PAT', href: '#', status: 'current' },
+    { name: 'สอบ วิชาสามัญ', href: '#', status: 'upcoming' },
+    { name: 'ประกาศคะแนน', href: '#', status: 'upcoming' },
+    { name: 'เลือกมหาลัย', href: '#', status: 'upcoming' },
+    { name: 'ประกาศ TCAS รอบ 3', href: '#', status: 'upcoming' },
 ]
 
 function classNames(...classes: any[]) {
@@ -32,6 +32,9 @@ export default function ProgressBar() {
                                     <CheckIcon className="w-5 h-5 text-white" aria-hidden="true" />
                                     <span className="sr-only">{step.name}</span>
                                 </a>
+                                <div className="absolute text-xs mt-2 w-32 -ml-10 text-center">
+                                    {step.name}
+                                </div>
                             </>
                         ) : step.status === 'current' ? (
                             <>
@@ -46,6 +49,9 @@ export default function ProgressBar() {
                                     <span className="h-2.5 w-2.5 bg-base rounded-full" aria-hidden="true" />
                                     <span className="sr-only">{step.name}</span>
                                 </a>
+                                <div className="absolute text-xs mt-2 w-32 -ml-10 text-center">
+                                    {step.name}
+                                </div>
                             </>
                         ) : (
                             <>
@@ -62,6 +68,9 @@ export default function ProgressBar() {
                                     />
                                     <span className="sr-only">{step.name}</span>
                                 </a>
+                                <div className="absolute text-xs mt-2 w-32 -ml-10 text-center">
+                                    {step.name}
+                                </div>
                             </>
                         )}
                     </li>
