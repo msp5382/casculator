@@ -25,7 +25,7 @@ export default ({ children, w, isShow, header, onClose }: Props) => {
             </div>
           </div>
         </div>
-        <div className="w-screen h-screen fixed bg-black opacity-30 z-40"></div>
+        <div className="w-screen h-screen fixed bg-black opacity-0 z-40"></div>
       </>
     );
   } else {

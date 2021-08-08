@@ -33,7 +33,7 @@ const Index = () => {
       <div
         className="h-screen flex flex-col"
       >
-        <div className="hidden sm:flex justify-center mt-16">
+        <div className="hidden lg:flex justify-center mt-16">
           <ProgressBar></ProgressBar>
         </div>
 
@@ -74,7 +74,7 @@ const Index = () => {
         </div>
       </div>
       <div
-        className="min-h-screen md:hidden flex items-center pr-3 pl-3 justify-around"
+        className="min-h-screen lg:hidden flex items-center pr-3 pl-3 justify-around"
         style={{ marginTop: -40, paddingTop: 40 }} ref={proRef}>
         <ProgressBarH></ProgressBarH>
       </div>

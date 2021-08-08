@@ -2,18 +2,13 @@
 import { CheckIcon } from '@heroicons/react/solid'
 
 const steps = [
-    { name: 'Create account', description: 'Vitae sed mi luctus laoreet.', href: '#', status: 'complete' },
-    {
-        name: 'Profile information',
-        description: 'Cursus semper viverra facilisis et et some more.',
-        href: '#',
-        status: 'current',
-    },
-    { name: 'Business information', description: 'Penatibus eu quis ante.', href: '#', status: 'upcoming' },
-    { name: 'Theme', description: 'Faucibus nec enim leo et.', href: '#', status: 'upcoming' },
-    { name: 'Preview', description: 'Iusto et officia maiores porro ad non quas.', href: '#', status: 'upcoming' },
-    { name: 'Preview', description: 'Iusto et officia maiores porro ad non quas.', href: '#', status: 'upcoming' },
-    { name: 'Preview', description: 'Iusto et officia maiores porro ad non quas.', href: '#', status: 'upcoming' },
+    { name: 'สมัครสอบ GAT/PAT', href: '#', status: 'complete' },
+    { name: 'สมัครสอบ วิชาสามัญ', href: '#', status: 'complete' },
+    { name: 'สอบ GAT/PAT', href: '#', status: 'current' },
+    { name: 'สอบ วิชาสามัญ', href: '#', status: 'upcoming' },
+    { name: 'ประกาศคะแนน', href: '#', status: 'upcoming' },
+    { name: 'เลือกมหาลัย', href: '#', status: 'upcoming' },
+    { name: 'ประกาศ TCAS รอบ 3', href: '#', status: 'upcoming' },
 ]
 
 function classNames(...classes: any[]) {
@@ -37,9 +32,8 @@ export default function ProgressBarH() {
                                             <CheckIcon className="w-5 h-5 text-white" aria-hidden="true" />
                                         </span>
                                     </span>
-                                    <span className="ml-4 min-w-0 flex flex-col">
+                                    <span className="ml-4 h-full min-w-0 flex flex-col justify-around mt-2.5">
                                         <span className="text-xs font-semibold tracking-wide uppercase">{step.name}</span>
-                                        <span className="text-sm text-gray-500">{step.description}</span>
                                     </span>
                                 </a>
                             </>
@@ -54,9 +48,8 @@ export default function ProgressBarH() {
                                             <span className="h-2.5 w-2.5 bg-base rounded-full" />
                                         </span>
                                     </span>
-                                    <span className="ml-4 min-w-0 flex flex-col">
+                                    <span className="ml-4 h-full min-w-0 flex flex-col justify-around mt-2.5">
                                         <span className="text-xs font-semibold tracking-wide uppercase text-base">{step.name}</span>
-                                        <span className="text-sm text-gray-500">{step.description}</span>
                                     </span>
                                 </a>
                             </>
@@ -71,9 +64,8 @@ export default function ProgressBarH() {
                                             <span className="h-2.5 w-2.5 bg-transparent rounded-full group-hover:bg-gray-300" />
                                         </span>
                                     </span>
-                                    <span className="ml-4 min-w-0 flex flex-col">
+                                    <span className="ml-4 h-full min-w-0 flex flex-col mt-2.5">
                                         <span className="text-xs font-semibold tracking-wide uppercase text-gray-500">{step.name}</span>
-                                        <span className="text-sm text-gray-500">{step.description}</span>
                                     </span>
                                 </a>
                             </>
