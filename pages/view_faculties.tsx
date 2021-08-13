@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useSpring, useChain, useSpringRef, config, animated, useTransition } from "react-spring";
+import Image from "next/image"
 // Component
 import Nav from "../components/Nav";
 import Search from "../components/Forms/Search";
@@ -8,6 +9,9 @@ import Button from "../components/Forms/Button";
 // Data
 import { getUniversityFromCache, getFaculityFromCache } from "../services/universities";
 import { FacultiesType, univercitysType } from "../models/univercitys.model";
+// Image
+import ChulaLogo from "../public/chula_test.png"
+
 
 const viewFaculties = () => {
   const [sort, setSort] = useState("default");
@@ -37,6 +41,8 @@ const viewFaculties = () => {
     const originLen = originUni.current.length
     setUnis(originUni.current.slice(0, (uniAmount - 1) > originLen ? originLen : uniAmount))
   }, [loadPage]);
+
+
   // for animated
   const springApi = useSpringRef();
   const transUniApi = useSpringRef()
@@ -129,9 +135,11 @@ const viewFaculties = () => {
             onClick={() => setViewUni(item.university_id)}
             className="flex bg-thin-white rounded p-3 mt-2"
           >
-            <img
-              className="h-8 w-8 rounded-full"
-              src={"chula_test.png"}
+            <Image
+              className="rounded-full"
+              width={50}
+              height={50}
+              src={ChulaLogo}
             />
             <div className="flex flex-col justify-center w-full pl-4">
               <div className="text-sm">{item.university_name}</div>

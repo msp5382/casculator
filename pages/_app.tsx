@@ -1,5 +1,6 @@
 import "tailwindcss/tailwind.css";
 import "../styles/global.css";
+import Script from "next/script"
 import type { AppProps } from 'next/app'
 
 import * as React from 'react'
@@ -23,14 +24,14 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Component {...pageProps} />
-      <script
+      <Script
         type="module"
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-      ></script>
-      <script
+      ></Script>
+      <Script
         noModule
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-      ></script>
+      ></Script>
     </>
   );
 }

@@ -5,7 +5,7 @@ import ProgressBar from "../components/Bars/TailProg";
 import ProgressBarH from "../components/Bars/TailProgH";
 import Nav from "../components/Nav";
 import CountDown from "../components/animated/CountDown.animated"
-import router from "next/router";
+import Link from "next/link";
 
 const Index = () => {
   const donateRef = useRef<null | HTMLDivElement>(null);
@@ -42,12 +42,13 @@ const Index = () => {
             <CountDown />
           </div>
           <div className="flex justify-center">
-            <div
-              onClick={() => router.push('/view_faculties')}
-              className="cursor-pointer mb-5 lg:mb-12 rounded-full text-white text-xl p-5 bg-base"
-            >
-              ดูสถิติคณะต่างๆ
-            </div>
+            <Link href="/view_faculties">
+              <a>
+                <div className="cursor-pointer mb-5 lg:mb-12 rounded-full text-white text-xl p-5 bg-base" >
+                  ดูสถิติคณะต่างๆ
+                </div>
+              </a>
+            </Link>
           </div>
 
           <div
