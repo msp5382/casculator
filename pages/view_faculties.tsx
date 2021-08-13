@@ -1,5 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useSpring, useChain, useSpringRef, config, animated, useTransition } from "react-spring";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image"
 // Component
 import Nav from "../components/Nav";
@@ -43,38 +42,7 @@ const viewFaculties = () => {
   }, [loadPage]);
 
 
-  // for animated
-  const springApi = useSpringRef();
-  const transUniApi = useSpringRef()
-  const transFaculsApi = useSpringRef()
-  const { y, opacity } = useSpring({
-    from: {
-      y: '50px',
-      opacity: 0.0,
-    },
-    y: '0px',
-    opacity: 1.0,
-    delay: 250,
-    config: config.molasses,
-    ref: springApi,
-  })
   let filter_facus = facus.filter(({ university_id }) => university_id == viewUni)
-  const transitionUnis = useTransition(unis, {
-    ref: transUniApi,
-    trail: 500 / unis.length,
-    from: { opacity: 0, scale: 0 },
-    enter: { opacity: 1, scale: 1 },
-    // leave: { opacity: 0, scale: 0.5, x: 10 },
-  })
-  const transitionFaculs = useTransition(filter_facus, {
-    // ref: transFaculsApi,
-    trail: 500 / filter_facus.length,
-    from: { opacity: 0, scale: 0 },
-    enter: { opacity: 1, scale: 1 },
-    // leave: { opacity: 0, scale: 0.5, x: 10 },
-  })
-
-  useChain([springApi, transUniApi])
 
   useEffect(() => {
     (async () => {
@@ -129,8 +97,8 @@ const viewFaculties = () => {
   // logo not exist
   const UniOrFacuList = () => {
     if (viewUni == "") {
-      return transitionUnis((style, item) => (
-        <animated.div key={item.university_id} style={{ ...style, userSelect: "none" }}>
+      return unis.map((item) => (
+        <div key={item.university_id} style={{ userSelect: "none" }}>
           <div
             onClick={() => setViewUni(item.university_id)}
             className="flex bg-thin-white rounded p-3 mt-2"
@@ -148,19 +116,19 @@ const viewFaculties = () => {
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </div>
           </div>
-        </animated.div>
+        </div>
       ));
 
     } else {
-      return (transitionFaculs((style, item) => (<>
-        <animated.div key={item.faculty_id} className="flex bg-thin-white rounded p-3 mt-2" style={{ ...style, userSelect: "none" }}>
+      return (filter_facus.map((value) => (<>
+        <div key={value.faculty_id} className="flex bg-thin-white rounded p-3 mt-2" style={{ userSelect: "none" }}>
           <div className="flex flex-col justify-center w-full pl-4">
-            <div className="text-sm">{item.faculty_name_th}</div>
+            <div className="text-sm">{value.faculty_name_th}</div>
             <div className="text-xs text-gray-400">
-              {item.field_name_th} {item.major_name_th} {item.program_type_name_th}
+              {value.field_name_th} {value.major_name_th} {value.program_type_name_th}
             </div>
           </div>
-        </animated.div>
+        </div>
       </>))
       );
     }
@@ -194,10 +162,10 @@ const viewFaculties = () => {
         </div>
       </Modal>
       <div className="mx-auto p-5 w-full h-full max-w-lg">
-        <animated.div
+        <div
           className="flex flex-col bg-base rounded-lg p-4"
           // TODO:
-          style={{ height: "80vh", y, opacity }}
+          style={{ height: "80vh" }}
         >
           <div className="flex">
             {viewUni == "" ? (
@@ -232,7 +200,7 @@ const viewFaculties = () => {
           </div>
 
           <div onScroll={onFaculScroll} ref={scrollRef} className="overflow-scroll h-full mt-2 scrollbar-hide">{UniOrFacuList()}</div>
-        </animated.div>
+        </div>
       </div>
     </div>
   );
