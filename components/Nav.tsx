@@ -14,7 +14,7 @@ const Nav = () => {
   ];
   return (
     <>
-      <div className="fixed w-full z-50 ticky top-0" ref={hRef}>
+      <div className="w-full" ref={hRef}>
         <div className="bg-base flex justify-between">
           <Link href={"/#"}>
             <div
