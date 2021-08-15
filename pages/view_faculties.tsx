@@ -207,7 +207,7 @@ const viewFaculties = ({ uniss, facuss }: { uniss: univercitysType[], facuss: Fa
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
   const url1 = "https://tcas.sgp1.digitaloceanspaces.com/data/universities.json";
