@@ -19,7 +19,7 @@ export default function ProgressBar() {
         <nav aria-label="Progress">
             <ol className="flex items-center">
                 {steps.map((step, stepIdx) => (
-                    <li key={step.name} className={classNames(stepIdx !== steps.length - 1 ? 'pr-8 md:pr-20 sm:pr-14' : '', 'relative')}>
+                    <li key={step.name} className={classNames(stepIdx !== steps.length - 1 ? 'pr-8 lg:pr-20 sm:pr-14' : '', 'relative')}>
                         {step.status === 'complete' ? (
                             <>
                                 <div className="absolute inset-0 flex items-center" aria-hidden="true">

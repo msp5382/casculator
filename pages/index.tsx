@@ -13,9 +13,6 @@ const Index = () => {
   const proRef = useRef<null | HTMLDivElement>(null);
   const router = useRouter();
   const { page } = router.query;
-  // const startCountDown = 365;
-  // const target = 10;
-  // const [showCalcButton, setShowCalcButton] = useState(true);
   useEffect(() => {
     setTimeout(() => {
       if (page == 'donate') {
@@ -25,75 +22,48 @@ const Index = () => {
   }, [page])
 
   return (
-    <>
-      <div
-        ref={mainRef}
-        className="w-screen h-screen overflow-scroll flex flex-col"
-      >
-        <div className="fixed w-full z-50 top-0">
+    <div ref={mainRef} className="w-screen h-auto p-0 m-0">
+      <div className="w-full fixed top-0 z-20">
         <Nav />
+      </div>
+      <div className="w-full h-screen flex flex-col justify-between items-center">
+        <div className="mt-24 hidden lg:flex">
+          <ProgressBar />
         </div>
-        <div
-          className="h-screen flex flex-col pt-5"
-        >
-          <div className="hidden lg:flex justify-center mt-16">
-            <ProgressBar></ProgressBar>
-          </div>
-
-          <div className="h-screen flex flex-col items-center">
-            <div className="my-auto pb-8">
-              <CountDown />
-            </div>
-            <div className="flex justify-center">
-              <Link href="/view_faculties">
-                <a>
-                  <div className="cursor-pointer mb-5 lg:mb-12 rounded-full text-white text-xl p-5 bg-base" >
-                    ดูสถิติคณะต่างๆ
-                  </div>
-                </a>
-              </Link>
-            </div>
-
-            <div
-              onClick={() => {
-                if (mainRef.current) {
-                  if (mainRef.current.offsetWidth > 1024) {
-                    donateRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                  } else {
-                    proRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                  }
-                }
-              }
-              }
-              className="pb-2 mb-8 flex justify-center"
-            >
-              <div className="animate-bounce">
-                <ion-icon
-                  className="fill-current text-base"
-                  size="large"
-                  name="chevron-down-outline"
-                ></ion-icon>
+        <div className="mt-16 h-[40px] flex lg:hidden" />
+        <div className="flex flex-col items-center flex-center">
+          <CountDown />
+        </div>
+        <div className="flex flex-col items-center">
+          <Link href="/view_faculties">
+            <a>
+              <div className="py-4 px-5 text-center text-2xl rounded-3xl text-thin-white bg-base">
+                <h1>
+                  ดูสถิติคณะ
+                </h1>
               </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="min-h-screen lg:hidden flex items-center pr-3 pl-3 justify-around"
-          style={{ marginTop: -40, paddingTop: 40 }} ref={proRef}>
-          <ProgressBarH></ProgressBarH>
-        </div>
-        <div
-          className="h-screen flex flex-col"
-          style={{ marginTop: -40, paddingTop: 40 }}
-        >
-          <div className="h-screen flex flex-col items-center">
-            <div ref={donateRef} className="my-auto text-lg">
-              ร่วมสนับสนุนพวกเราได้ที่
-            </div>
+            </a>
+          </Link>
+          <div onClick={() => {
+            if (mainRef.current != undefined) {
+              if (mainRef.current.offsetWidth > 1024) {
+                donateRef.current?.scrollIntoView({ behavior: "smooth" })
+              } else {
+                proRef.current?.scrollIntoView({ behavior: "smooth" })
+              }
+            }
+          }} className="my-5 animate-bounce">
+            <ion-icon size="large" name="chevron-down-outline"></ion-icon>
           </div>
         </div>
       </div>
-    </>
+      <div ref={proRef} className="w-full h-screen flex flex-col justify-around items-center lg:hidden">
+        <ProgressBarH />
+      </div>
+      <div ref={donateRef} className="w-full h-screen flex flex-col justify-around items-center">
+        รวมสนับสนุนพวกเราได้ที่
+      </div>
+    </div>
   );
 };
 

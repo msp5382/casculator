@@ -25,9 +25,15 @@ input:focus-within ~ label {
   @apply text-base-bg;
 }
 
+*{
+  margin: 0;
+  padding: 0
+}
+
 html,
 body {
   margin: 0;
+  padding: 0
 }
 
 .scrollbar-hide {

@@ -8,7 +8,7 @@ type Props = {
   onClose: MouseEventHandler<HTMLDivElement>,
 }
 
-export default ({ children, w, isShow, header, onClose }: Props) => {
+export default function Modal({ children, w, isShow, header, onClose }: Props) {
   if (isShow) {
     return (
       <>

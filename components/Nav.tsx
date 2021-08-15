@@ -74,12 +74,6 @@ const Nav = () => {
           </div>
         )}
       </div>
-      <div
-        className="mb-5"
-        style={{ height: hRef.current?.offsetHeight ?? 48 }}
-      >
-        .
-      </div>
     </>
   );
 };
