@@ -10,13 +10,14 @@ import { getUniversityFromCache, getFaculityFromCache } from "../services/univer
 import { FacultiesType, univercitysType } from "../models/univercitys.model";
 // Image
 import ChulaLogo from "../public/chula_test.png"
+import { url } from "inspector";
 
 
-const viewFaculties = () => {
+const viewFaculties = ({ uniss, facuss }: { uniss: univercitysType[], facuss: FacultiesType[] }) => {
   const [sort, setSort] = useState("default");
   const [isShowSortModal, setShowSortModal] = useState(false);
-  const [unis, setUnis] = useState<univercitysType[]>([]);
-  const [facus, setFacus] = useState<FacultiesType[]>([]);
+  const [unis, setUnis] = useState<univercitysType[]>(uniss);
+  const [facus, setFacus] = useState<FacultiesType[]>(facuss);
   const originUni = useRef<univercitysType[]>([]);
   const [searchKey, setSearch] = useState("");
   const [viewUni, setViewUni] = useState("");
@@ -206,6 +207,23 @@ const viewFaculties = () => {
   );
 };
 
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts.
+  // You can use any data fetching library
+  const url1 = "https://tcas.sgp1.digitaloceanspaces.com/data/universities.json";
+  const res1 = await fetch(url1)
+  const uniss = await res1.json()
+
+  let url2 = "https://tcas.sgp1.digitaloceanspaces.com/data/courses.json"
+  const res2 = await fetch(url2)
+  const facuss = await res2.json()
+  // By returning { props: { posts } }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      uniss, facuss
+    },
+  }
+}
+
 export default viewFaculties;
-
-

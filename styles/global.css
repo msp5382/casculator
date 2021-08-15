@@ -41,9 +41,3 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #FF0000;
 }
-
-@layer base{
-  @apply h-screen{
-    height: -webkit-fill-available;
-  }
-}
