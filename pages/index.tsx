@@ -26,7 +26,7 @@ const Index = () => {
       <div className="w-full fixed top-0 z-20">
         <Nav />
       </div>
-      <div className="w-full h-screen flex flex-col justify-between items-center">
+      <div className="w-full h-screen flex flex-col justify-between items-center overflow-hidden">
         <div className="mt-24 hidden lg:flex">
           <ProgressBar />
         </div>
@@ -52,15 +52,15 @@ const Index = () => {
                 proRef.current?.scrollIntoView({ behavior: "smooth" })
               }
             }
-          }} className="my-5 animate-bounce">
+          }} className="my-5 animate-bounce cursor-pointer">
             <ion-icon size="large" name="chevron-down-outline"></ion-icon>
           </div>
         </div>
       </div>
-      <div ref={proRef} className="w-full h-screen flex flex-col justify-around items-center lg:hidden">
+      <div ref={proRef} className="w-full h-screen flex flex-col justify-around items-center lg:hidden overflow-hidden">
         <ProgressBarH />
       </div>
-      <div ref={donateRef} className="w-full h-screen flex flex-col justify-around items-center">
+      <div ref={donateRef} className="w-full h-screen flex flex-col justify-around items-center overflow-hidden">
         รวมสนับสนุนพวกเราได้ที่
       </div>
     </div>

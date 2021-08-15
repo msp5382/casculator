@@ -20,7 +20,7 @@ export default function ProgressBarH() {
         <nav aria-label="Progress">
             <ol className="overflow-hidden">
                 {steps.map((step, stepIdx) => (
-                    <li key={step.name} className={classNames(stepIdx !== steps.length - 1 ? 'pb-10' : '', 'relative')}>
+                    <li key={step.name} className={classNames(stepIdx !== steps.length - 1 ? 'pb-3 ip:pb-4 ipN:pb-10' : '', 'relative')}>
                         {step.status === 'complete' ? (
                             <>
                                 {stepIdx !== steps.length - 1 ? (

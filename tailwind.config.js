@@ -19,6 +19,14 @@ module.exports = {
         "base-bg": "#D8B88F",
         "thin-white": "#F6F6F6",
       },
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding',
+      },
+      screens: {
+        'ip': { 'raw': '(min-height: 350px)' },
+        'ipN': { 'raw': '(min-height: 420px)' },
+      }
     },
   },
   variants: {

@@ -1,10 +1,12 @@
-import { useRef, useState } from "react";
+import { useRef, useState, Fragment } from "react";
+import { Transition } from '@headlessui/react'
 import Link from "next/link";
 
 import Hamburger from "hamburger-react";
 const Nav = () => {
   const hRef = useRef<HTMLDivElement>(null);
   const [isOpen, setOpen] = useState(false);
+  const [trail, setTrail] = useState(false);
   const data = [
     { name: "หน้าหลัก", path: "/" },
     { name: "คะแนนของฉัน", path: "/save_points" },
@@ -14,7 +16,7 @@ const Nav = () => {
   ];
   return (
     <>
-      <div className="w-full" ref={hRef}>
+      <div className="w-full overflow-hidden" ref={hRef}>
         <div className="bg-base flex justify-between">
           <Link href={"/#"}>
             <div
@@ -57,22 +59,35 @@ const Nav = () => {
             />
           </div>
         </div>
-        {isOpen && (
-          <div className="bg-base text-sm text-white">
-            {data.map((t, i) => (
-              <Link href={t.path}>
-                <a>
-                  <div
-                    key={i}
-                    className="cursor-pointer border-t border-base-light p-3"
-                  >
-                    {t.name}
-                  </div>
-                </a>
-              </Link>
-            ))}
-          </div>
-        )}
+        <div className="md:hidden">
+          <Transition
+            as={Fragment}
+            show={isOpen}
+            enter="transition-all ease-out duration-450"
+            enterFrom="h-0"
+            enterTo="h-[225px]"
+            leave="transition-all ease-out duration-450"
+            leaveFrom="h-[225px]"
+            leaveTo="h-0"
+          // afterEnter={() => setTrail(true)}
+          // afterLeave={() => setTrail(false)}
+          >
+            <div className="bg-base text-sm text-white">
+              {data.map((t, i) => (
+                <Link href={t.path}>
+                  <a>
+                    <div
+                      key={i}
+                      className="cursor-pointer border-t border-base-light p-3"
+                    >
+                      {t.name}
+                    </div>
+                  </a>
+                </Link>
+              ))}
+            </div>
+          </Transition>
+        </div>
       </div>
     </>
   );
