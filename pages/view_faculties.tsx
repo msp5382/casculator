@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image"
 import { InferGetServerSidePropsType } from 'next'
+import { GetServerSideProps } from 'next'
 // Component
 import Nav from "../components/Nav";
 import Search from "../components/Forms/Search";
@@ -208,7 +209,7 @@ const Page = ({ uniss, facuss }: InferGetServerSidePropsType<typeof getServerSid
   );
 };
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
   const url1 = "https://tcas.sgp1.digitaloceanspaces.com/data/universities.json";
