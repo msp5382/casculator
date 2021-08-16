@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image"
+import { InferGetServerSidePropsType } from 'next'
 // Component
 import Nav from "../components/Nav";
 import Search from "../components/Forms/Search";
@@ -13,7 +14,7 @@ import ChulaLogo from "../public/chula_test.png"
 import { url } from "inspector";
 
 
-const viewFaculties = ({ uniss, facuss }: { uniss: univercitysType[], facuss: FacultiesType[] }) => {
+const Page = ({ uniss, facuss }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [sort, setSort] = useState("default");
   const [isShowSortModal, setShowSortModal] = useState(false);
   const [unis, setUnis] = useState<univercitysType[]>(uniss);
@@ -226,4 +227,4 @@ export async function getServerSideProps() {
   }
 }
 
-export default viewFaculties;
+export default Page;

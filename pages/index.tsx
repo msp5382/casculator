@@ -27,7 +27,7 @@ const Index = () => {
       <Head>
         <meta
           property="og:url"
-          content="https://web-khun-peam.vercel.app"
+          content="https://casculator-preview.vercel.app"
         />
         <meta
           property="og:title"
