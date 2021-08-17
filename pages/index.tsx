@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from 'next/router'
 import Head from "next/head"
+import { useSpring, animated } from "react-spring"
 // Components
 import ProgressBar from "../components/Bars/TailProg";
 import ProgressBarH from "../components/Bars/TailProgH";
@@ -14,6 +15,7 @@ const Index = () => {
   const proRef = useRef<null | HTMLDivElement>(null);
   const router = useRouter();
   const { page } = router.query;
+
   useEffect(() => {
     setTimeout(() => {
       if (page == 'donate') {
@@ -21,6 +23,21 @@ const Index = () => {
       }
     }, 800)
   }, [page])
+
+  const bouncing = useSpring({
+    loop: true,
+    config: {
+      tension: 50,
+      friction: 16,
+      velocity: 1,
+      mass: 2,
+      duration: 800,
+      easing: t => ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2,
+    },
+    to: [{ y: -10 }, { y: 0 }]
+    ,
+    from: { y: 0 }
+  });
 
   return (
     <>
@@ -65,7 +82,7 @@ const Index = () => {
                 </div>
               </a>
             </Link>
-            <div onClick={() => {
+            <animated.div style={bouncing} onClick={() => {
               if (mainRef.current != undefined) {
                 if (mainRef.current.offsetWidth > 1024) {
                   donateRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -73,9 +90,9 @@ const Index = () => {
                   proRef.current?.scrollIntoView({ behavior: "smooth" })
                 }
               }
-            }} className="my-5 animate-bounce cursor-pointer">
+            }} className="my-5 cursor-pointer">
               <ion-icon size="large" name="chevron-down-outline"></ion-icon>
-            </div>
+            </animated.div>
           </div>
         </div>
         <div ref={proRef} className="w-full h-screen flex flex-col justify-around items-center lg:hidden overflow-hidden">

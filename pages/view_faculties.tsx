@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image"
-import { InferGetServerSidePropsType } from 'next'
-import { GetServerSideProps } from 'next'
 // Component
 import Nav from "../components/Nav";
 import Search from "../components/Forms/Search";
@@ -12,10 +10,9 @@ import { getUniversityFromCache, getFaculityFromCache } from "../services/univer
 import { FacultiesType, univercitysType } from "../models/univercitys.model";
 // Image
 import ChulaLogo from "../public/chula_test.png"
-import { url } from "inspector";
 
 
-const Page = ({ uniss, facuss }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Page = ({ uniss, facuss }: { uniss: univercitysType[], facuss: FacultiesType[] }) => {
   const [sort, setSort] = useState("default");
   const [isShowSortModal, setShowSortModal] = useState(false);
   const [unis, setUnis] = useState<univercitysType[]>(uniss);
@@ -209,18 +206,13 @@ const Page = ({ uniss, facuss }: InferGetServerSidePropsType<typeof getServerSid
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
+export async function getStaticProps() {
   const url1 = "https://tcas.sgp1.digitaloceanspaces.com/data/universities.json";
   const res1 = await fetch(url1)
   const uniss = await res1.json()
-
   let url2 = "https://tcas.sgp1.digitaloceanspaces.com/data/courses.json"
   const res2 = await fetch(url2)
   const facuss = await res2.json()
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
   return {
     props: {
       uniss, facuss
