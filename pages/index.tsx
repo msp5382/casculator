@@ -61,7 +61,7 @@ const Index = () => {
         <meta property="twitter:card" content="summary_large_image" />
       </Head>
       <div ref={mainRef} className="w-screen h-auto p-0 m-0">
-        <div className="w-full fixed top-0 z-20">
+        <div className="w-full">
           <Nav />
         </div>
         <div className="w-full h-screen flex flex-col justify-between items-center overflow-hidden">
